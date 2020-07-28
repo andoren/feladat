@@ -4,6 +4,7 @@ import core.exceptions.InvalidEmailException;
 import core.exceptions.InvalidPassword;
 import core.exceptions.InvalidRealnameException;
 import core.exceptions.InvalidUsernameException;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class User {
     }
 
     @OneToMany(mappedBy = "owner")
+    @Fetch()
     private List<Product> products = new ArrayList<>();
 
     public String getEmail() {

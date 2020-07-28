@@ -72,7 +72,7 @@ public class Product {
         this.owner = owner;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner")
     private User owner;
     @Column(name = "created_date")

@@ -5,6 +5,7 @@ import core.model.User;
 
 import java.util.Collection;
 
+
 public interface IProductDAO {
     Collection<Product> getProducts();
     Collection<Product> getProductsByUserId(User user);

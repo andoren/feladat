@@ -8,18 +8,18 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import service.dao.IProductDAO;
 import service.dao.IUserDAO;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+
 import java.util.Collection;
 import java.util.List;
 
-@ApplicationScoped
-public class MysqlProductDAO implements IProductDAO {
+
+public class MysqlProductDAO implements IProductDAO  {
     public MysqlProductDAO(){
         Configuration configuration = new Configuration().configure();
         configuration.configure("hibernate.cfg.xml");
@@ -28,9 +28,9 @@ public class MysqlProductDAO implements IProductDAO {
 
         StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         sessionFactory = configuration.buildSessionFactory(ssrb.build());
-
+        userDAO=new MysqlUserDAO();
     }
-    @Inject
+
     IUserDAO userDAO;
     protected SessionFactory sessionFactory;
 

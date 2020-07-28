@@ -3,15 +3,17 @@ package service.impl;
 import core.model.Role;
 import core.model.User;
 import core.service.IUserService;
+import dao.impl.MysqlUserDAO;
 import service.dao.IUserDAO;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import java.util.Collection;
-@ApplicationScoped
-public class UserService implements IUserService {
-    @Inject  private IUserDAO dao;
 
+import java.util.Collection;
+
+public class UserService implements IUserService {
+    private IUserDAO dao;
+    public UserService(){
+        dao = new MysqlUserDAO();
+    }
     public Collection<User> getAllUsers() {
         return dao.getAllUsers();
     }
