@@ -9,6 +9,8 @@ import org.hibernate.cfg.Configuration;
 import service.dao.IProductDAO;
 import service.dao.IUserDAO;
 
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -18,7 +20,7 @@ import javax.persistence.criteria.Root;
 import java.util.Collection;
 import java.util.List;
 
-
+@Stateless
 public class MysqlProductDAO implements IProductDAO  {
     public MysqlProductDAO(){
         Configuration configuration = new Configuration().configure();

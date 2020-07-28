@@ -4,16 +4,23 @@ import core.model.Product;
 import core.model.User;
 import core.service.IProductSerivce;
 import dao.impl.MysqlProductDAO;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import service.dao.IProductDAO;
 
 
 import java.util.Collection;
 
+@Stateless
 public class ProductService implements IProductSerivce {
+    @EJB
     private IProductDAO dao;
-    public ProductService(){
-        dao = new MysqlProductDAO();
-    }
+
     public Collection<Product> getProducts() {
         return dao.getProducts();
     }

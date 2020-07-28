@@ -55,7 +55,7 @@ public class User {
     }
 
     @OneToMany(mappedBy = "owner")
-    @Fetch()
+
     private List<Product> products = new ArrayList<>();
 
     public String getEmail() {
