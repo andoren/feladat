@@ -46,17 +46,17 @@ public class User {
     private String username;
 
 
-    public List<Product> getProducts() {
-        return products;
-    }
+    //public List<Product> getProducts() {
+        //return products;
+    //}
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+    //public void setProducts(List<Product> products) {
+      //  this.products = products;
+    //}
 
-    @OneToMany(mappedBy = "owner")
+   // @OneToMany(mappedBy = "owner")
 
-    private List<Product> products = new ArrayList<>();
+    // private List<Product> products = new ArrayList<>();
 
     public String getEmail() {
         return email;
