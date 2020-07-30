@@ -45,6 +45,13 @@ public class User {
     @Column(name="username")
     private String username;
 
+    private String token;
+    public void setToken(String token){
+        this.token = token;
+    }
+    public String getToken(){
+        return this.token;
+    }
     public String getEmail() {
         return email;
     }

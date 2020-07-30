@@ -2,6 +2,6 @@ package controller;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;
 
-@ApplicationPath("/")
+@ApplicationPath("/api")
 public class RestApplication extends Application{
 }

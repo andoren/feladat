@@ -1,16 +1,22 @@
 package service.impl;
 
+import core.exceptions.InvalidPassword;
 import core.model.Role;
 import core.model.User;
 import core.service.IUserService;
 import dao.impl.MysqlUserDAO;
+import helper.EncryptionHelper;
 import service.dao.IUserDAO;
 
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.util.Collection;
-
+@Stateless
 public class UserService implements IUserService {
+    @EJB
     private IUserDAO dao;
+
     public UserService(){
         dao = new MysqlUserDAO();
     }
@@ -38,7 +44,8 @@ public class UserService implements IUserService {
         return dao.deleteUserById(id);
     }
 
-    public User logIn(String username, String password) {
+    public User logIn(String username, String password) throws InvalidPassword {
+        password = EncryptionHelper.encryptPassword(password);
         return dao.logIn(username,password);
     }
 

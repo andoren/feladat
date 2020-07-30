@@ -1,8 +1,10 @@
 package controller;
 
+import core.exceptions.InvalidPassword;
 import core.model.User;
 import core.service.IProductSerivce;
 import core.service.IUserService;
+import helper.JWTHelper;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -17,14 +19,15 @@ import javax.ws.rs.core.Response;
 public class UserEndpoints {
     @EJB
     IUserService service ;
-
+    JWTHelper jwtHelper = new JWTHelper();
     @POST
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAuthProducts(User user){
+    public Response Login(User user) throws InvalidPassword {
         User currentUser = service.logIn(user.getUsername(),user.getPassword());
         if(currentUser != null){
+
             return Response.ok(currentUser).build();
 
         }

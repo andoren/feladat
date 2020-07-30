@@ -1,5 +1,6 @@
 package dao.impl;
 
+import core.exceptions.InvalidPassword;
 import core.model.Product;
 import core.model.Role;
 import core.model.User;
@@ -11,6 +12,7 @@ import org.hibernate.query.Query;
 import service.dao.IUserDAO;
 
 
+import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -18,7 +20,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.Collection;
 
-
+@Stateless
 public class MysqlUserDAO implements IUserDAO {
     public MysqlUserDAO(){
         Configuration configuration = new Configuration().configure();
@@ -98,7 +100,7 @@ public class MysqlUserDAO implements IUserDAO {
     }
 
 
-    public User logIn(String username, String password) {
+    public User logIn(String username, String password) throws InvalidPassword {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         User user ;
