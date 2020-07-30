@@ -98,7 +98,7 @@ public class MysqlUserDAO implements IUserDAO {
     }
 
 
-    public boolean logIn(String username, String password) {
+    public User logIn(String username, String password) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         User user ;
@@ -106,9 +106,10 @@ public class MysqlUserDAO implements IUserDAO {
                 .uniqueResult();
 
         if (user != null) {
-            return true;
+            user.setPassword("TemporaryPassword#2");
+            return user;
         }
-        return false;
+        return null;
     }
 
 

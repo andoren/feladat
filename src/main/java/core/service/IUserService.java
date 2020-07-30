@@ -12,5 +12,5 @@ public interface IUserService {
     User getUserById(int id);
     User addUser(User user);
     boolean deleteUserById(int id);
-    boolean logIn(String username,String password);
+    User logIn(String username,String password);
 }

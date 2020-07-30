@@ -45,19 +45,6 @@ public class User {
     @Column(name="username")
     private String username;
 
-
-    //public List<Product> getProducts() {
-        //return products;
-    //}
-
-    //public void setProducts(List<Product> products) {
-      //  this.products = products;
-    //}
-
-   // @OneToMany(mappedBy = "owner")
-
-    // private List<Product> products = new ArrayList<>();
-
     public String getEmail() {
         return email;
     }
@@ -70,30 +57,24 @@ public class User {
         if(!isMatched) throw new InvalidEmailException("Invaild e-mail.");
         this.email = email;
     }
-
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) throws InvalidUsernameException {
         if(username == null) throw  new InvalidUsernameException("The username cannot be null.");
         else if(username.length() < 5) throw  new InvalidUsernameException("The username must be atleast 5 length long.");
         else if (username.length() >20)throw  new InvalidUsernameException("The username cannot be longer than 20 char.");
         this.username = username;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) throws InvalidPassword {
         if (password==null) throw  new InvalidPassword("Password cannot be null.");
         String regex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,20}";
@@ -102,11 +83,9 @@ public class User {
         if (!isMatched) throw new InvalidPassword("The password must contains atleast one lower case letter, one Upper case letter, a special char, no whitespace allowed, and must be at least 6 char long and max 20 .");
         this.password = password;
     }
-
     public String getRealname() {
         return realname;
     }
-
     public void setRealname(String realname) throws InvalidRealnameException {
         if(realname == null )throw new InvalidRealnameException("Realname cannot be null.");
         else if (realname.length() < 4) throw new InvalidRealnameException("Realname is too short.");
@@ -114,14 +93,10 @@ public class User {
         else if (!realname.contains(" "))throw new InvalidRealnameException("Realname does not contains space");
         this.realname = realname;
     }
-
     public Role getRole() {
         return role;
     }
-
     public void setRole(Role role) {
         this.role = role;
     }
-
-
 }

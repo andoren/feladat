@@ -1,8 +1,8 @@
 org.jboss.narayana.jta:jta:jar:5.9.8.Final#C:\Users\oszsz_17\.m2\repository\org\jboss\narayana\jta\jta\5.9.8.Final\jta-5.9.8.Final.jar
 org.hibernate:hibernate-core:jar:5.3.13.Final#C:\Users\oszsz_17\.m2\repository\org\hibernate\hibernate-core\5.3.13.Final\hibernate-core-5.3.13.Final.jar
 org.jboss.spec.javax.jms:jboss-jms-api_2.0_spec:jar:2.0.0.Final#C:\Users\oszsz_17\.m2\repository\org\jboss\spec\javax\jms\jboss-jms-api_2.0_spec\2.0.0.Final\jboss-jms-api_2.0_spec-2.0.0.Final.jar
-org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:jar:2.0.0#C:\Users\oszsz_17\.m2\repository\org\jboss\shrinkwrap\descriptors\shrinkwrap-descriptors-spi\2.0.0\shrinkwrap-descriptors-spi-2.0.0.jar
 org.jboss.narayana.jts:narayana-jts-idlj:jar:5.9.8.Final#C:\Users\oszsz_17\.m2\repository\org\jboss\narayana\jts\narayana-jts-idlj\5.9.8.Final\narayana-jts-idlj-5.9.8.Final.jar
+org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:jar:2.0.0#C:\Users\oszsz_17\.m2\repository\org\jboss\shrinkwrap\descriptors\shrinkwrap-descriptors-spi\2.0.0\shrinkwrap-descriptors-spi-2.0.0.jar
 org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:jar:2.0.0#C:\Users\oszsz_17\.m2\repository\org\jboss\shrinkwrap\descriptors\shrinkwrap-descriptors-api-base\2.0.0\shrinkwrap-descriptors-api-base-2.0.0.jar
 org.jboss.spec.javax.annotation:jboss-annotations-api_1.3_spec:jar:2.0.1.Final#C:\Users\oszsz_17\.m2\repository\org\jboss\spec\javax\annotation\jboss-annotations-api_1.3_spec\2.0.1.Final\jboss-annotations-api_1.3_spec-2.0.1.Final.jar
 org.hibernate:hibernate-envers:jar:5.3.13.Final#C:\Users\oszsz_17\.m2\repository\org\hibernate\hibernate-envers\5.3.13.Final\hibernate-envers-5.3.13.Final.jar
@@ -52,8 +52,8 @@ org.jboss.weld.module:weld-ejb:jar:3.1.2.Final#C:\Users\oszsz_17\.m2\repository\
 org.wildfly:wildfly-connector:jar:18.0.1.Final#C:\Users\oszsz_17\.m2\repository\org\wildfly\wildfly-connector\18.0.1.Final\wildfly-connector-18.0.1.Final.jar
 org.apache.maven:maven-artifact:jar:3.6.0#C:\Users\oszsz_17\.m2\repository\org\apache\maven\maven-artifact\3.6.0\maven-artifact-3.6.0.jar
 javax.enterprise:cdi-api:jar:2.0.SP1#C:\Users\oszsz_17\.m2\repository\javax\enterprise\cdi-api\2.0.SP1\cdi-api-2.0.SP1.jar
-io.thorntail:io:jar:2.7.0.Final#C:\Users\oszsz_17\.m2\repository\io\thorntail\io\2.7.0.Final\io-2.7.0.Final.jar
 org.jboss.narayana.arjunacore:arjuna:jar:5.9.8.Final#C:\Users\oszsz_17\.m2\repository\org\jboss\narayana\arjunacore\arjuna\5.9.8.Final\arjuna-5.9.8.Final.jar
+io.thorntail:io:jar:2.7.0.Final#C:\Users\oszsz_17\.m2\repository\io\thorntail\io\2.7.0.Final\io-2.7.0.Final.jar
 com.google.protobuf:protobuf-java:jar:3.11.4#C:\Users\oszsz_17\.m2\repository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar
 io.thorntail:connector:jar:2.7.0.Final#C:\Users\oszsz_17\.m2\repository\io\thorntail\connector\2.7.0.Final\connector-2.7.0.Final.jar
 org.jboss.spec.javax.xml.rpc:jboss-jaxrpc-api_1.1_spec:jar:2.0.0.Final#C:\Users\oszsz_17\.m2\repository\org\jboss\spec\javax\xml\rpc\jboss-jaxrpc-api_1.1_spec\2.0.0.Final\jboss-jaxrpc-api_1.1_spec-2.0.0.Final.jar
