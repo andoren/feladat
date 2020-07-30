@@ -10,8 +10,8 @@ import core.model.Role;
 import core.model.User;
 
 public class JWTHelper {
-    Algorithm algorithmHS = Algorithm.HMAC256("secret");
-    public String generateJWT(User user){
+    static Algorithm algorithmHS = Algorithm.HMAC256("secret");
+    public static  String generateJWT(User user){
         try {
 
             String token = JWT.create()
@@ -28,7 +28,7 @@ public class JWTHelper {
             return "";
         }
     }
-    public User decodeJWT(String token){
+    public static User decodeJWT(String token){
         try {
 
             JWTVerifier verifier = JWT.require(algorithmHS)

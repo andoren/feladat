@@ -44,7 +44,7 @@ public class User {
     private String email;
     @Column(name="username")
     private String username;
-
+    @Transient
     private String token;
     public void setToken(String token){
         this.token = token;

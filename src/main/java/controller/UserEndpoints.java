@@ -1,6 +1,7 @@
 package controller;
 
 import core.exceptions.InvalidPassword;
+import core.model.LoginData;
 import core.model.User;
 import core.service.IProductSerivce;
 import core.service.IUserService;
@@ -24,15 +25,16 @@ public class UserEndpoints {
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response Login(User user) throws InvalidPassword {
-        User currentUser = service.logIn(user.getUsername(),user.getPassword());
+    public Response Login(LoginData data) throws InvalidPassword {
+        User currentUser = service.logIn(data.getUsername(),data.getPassword());
         if(currentUser != null){
 
             return Response.ok(currentUser).build();
 
         }
         else {
-            return Response.ok(user).build();
+
+            return Response.ok(new User()).build();
         }
 
     }

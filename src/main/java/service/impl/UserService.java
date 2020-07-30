@@ -5,7 +5,7 @@ import core.model.Role;
 import core.model.User;
 import core.service.IUserService;
 import dao.impl.MysqlUserDAO;
-import helper.EncryptionHelper;
+import helper.JWTHelper;
 import service.dao.IUserDAO;
 
 
@@ -45,8 +45,10 @@ public class UserService implements IUserService {
     }
 
     public User logIn(String username, String password) throws InvalidPassword {
-        password = EncryptionHelper.encryptPassword(password);
-        return dao.logIn(username,password);
+
+        User user = dao.logIn(username,password);
+        user.setToken(JWTHelper.generateJWT(user));
+        return user;
     }
 
 

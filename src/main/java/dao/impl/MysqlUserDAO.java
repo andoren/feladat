@@ -109,9 +109,10 @@ public class MysqlUserDAO implements IUserDAO {
 
         if (user != null) {
             user.setPassword("TemporaryPassword#2");
+
             return user;
         }
-        return null;
+        return new User();
     }
 
 
