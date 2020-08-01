@@ -79,6 +79,7 @@ public class MysqlUserDAO implements IUserDAO {
     }
 
     public User addUser(User user) {
+        System.out.println(user);
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.persist(user);

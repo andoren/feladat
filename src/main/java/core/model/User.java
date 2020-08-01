@@ -29,6 +29,13 @@ public class User {
         setPassword(password);
 
     }
+    public User(User user) throws InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException {
+        this.setUsername(user.getUsername());
+        this.setPassword(user.getPassword());
+        this.setRealname(user.getRealname());
+        this.setEmail(user.getEmail());
+        this.setRole(user.getRole());
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -52,10 +59,10 @@ public class User {
     public String getToken(){
         return this.token;
     }
+
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) throws InvalidEmailException {
         if (email == null) throw new InvalidEmailException("Email cannot be null.");
         String regex ="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
@@ -83,11 +90,7 @@ public class User {
         return password;
     }
     public void setPassword(String password) throws InvalidPassword {
-        if (password==null) throw  new InvalidPassword("Password cannot be null.");
-        String regex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,20}";
-        Pattern pattern = Pattern.compile(regex);
-        boolean isMatched = Pattern.matches(regex, password);
-        if (!isMatched) throw new InvalidPassword("The password must contains atleast one lower case letter, one Upper case letter, a special char, no whitespace allowed, and must be at least 6 char long and max 20 .");
+
         this.password = password;
     }
     public String getRealname() {
@@ -105,5 +108,15 @@ public class User {
     }
     public void setRole(Role role) {
         this.role = role;
+    }
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Username: ").append(this.getUsername()).append("\n")
+                .append("Realname: ").append(this.getRealname()).append("\n")
+                .append("Password: ").append(this.getPassword()).append("\n")
+                .append("Email: ").append(this.getEmail()).append("\n")
+                .append("Role: ").append(this.getRole().name()).append("\n");
+
+        return stringBuilder.toString();
     }
 }

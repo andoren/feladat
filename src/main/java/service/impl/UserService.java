@@ -37,7 +37,10 @@ public class UserService implements IUserService {
     }
 
     public User addUser(User user) {
-        return dao.addUser(user);
+
+        User newuser = dao.addUser(user);
+        user.setToken(JWTHelper.generateJWT(newuser));
+        return newuser;
     }
 
     public boolean deleteUserById(int id) {
@@ -50,6 +53,5 @@ public class UserService implements IUserService {
         user.setToken(JWTHelper.generateJWT(user));
         return user;
     }
-
 
 }
