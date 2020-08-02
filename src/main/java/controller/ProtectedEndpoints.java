@@ -3,6 +3,7 @@ package controller;
 import core.model.Product;
 import core.model.User;
 import core.service.IProductSerivce;
+import core.service.IUserService;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -13,10 +14,11 @@ import javax.ws.rs.core.Response;
 @Path("/protected")
 @RequestScoped
 @Stateless
-public class ProductEndpoints {
+public class ProtectedEndpoints {
     @EJB
     IProductSerivce productService;
-
+    @EJB
+    IUserService userService;
     @POST
     @Path("/addproduct")
     @Produces("application/json")
@@ -37,5 +39,11 @@ public class ProductEndpoints {
         User user = new User();
         user.setId(id); ;
         return Response.ok(productService.getProductsByUserId(user)).build();
+    }
+    @GET
+    @Path("/getusers")
+    @Produces("application/json")
+    public Response getUsers(){
+        return Response.ok(userService.getAllUsers()).build();
     }
 }
