@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 
 public class RandomProductTest {
 
@@ -42,13 +43,16 @@ public class RandomProductTest {
     public void addProduct() throws InvalidProductNameException, InvalidProductDescriptionException, InvalidImagePathException, InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException, InvalidProductPriceException {
         Product newProduct = new Product();
         newProduct.setName("Hibernate");
-        newProduct.setCreated_date(LocalDate.now());
+        newProduct.setCreated_date(new Date());
         newProduct.setDescription("Első kapcsolótáblás hozzáadás");
         newProduct.setImagepath("C:\\imagePAth");
         newProduct.setIsAccapted(false);
         newProduct.setIsSold(false);
         newProduct.setPrice(10000);
-        Product meow = dao.addProduct(newProduct,2);
+        User user = new User();
+        user.setId(1);
+        newProduct.setOwner(user);
+        Product meow = dao.addProduct(newProduct);
     }
     @Test
     public void getUserProducts(){

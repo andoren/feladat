@@ -1,6 +1,7 @@
 package core.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.regex.Pattern;
 import core.exceptions.*;
 
@@ -26,13 +27,13 @@ public class Product {
     }
 
     public Product(Integer id, String name, String description, Integer price, Boolean issold, Boolean isaccapted, String imagepath,
-                   LocalDate created_date, LocalDate sold_date) throws InvalidProductNameException, InvalidProductDescriptionException, InvalidImagePathException, InvalidProductPriceException {
+                   Date created_date, Date sold_date) throws InvalidProductNameException, InvalidProductDescriptionException, InvalidImagePathException, InvalidProductPriceException {
         this(id, name, description, price, issold, isaccapted, imagepath);
         setCreated_date(created_date);
         setSold_date(sold_date);
     }
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "name")
     private String name;
@@ -76,19 +77,19 @@ public class Product {
     @JoinColumn(name = "owner")
     private User owner;
     @Column(name = "created_date")
-    private LocalDate created_date;
+    private Date created_date;
     @Column(name = "sold_date")
-    private LocalDate sold_date;
+    private Date sold_date;
 
     public String getImagepath() {
         return imagepath;
     }
 
     public void setImagepath(String imagepath) throws InvalidImagePathException {
-        String regex = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9._-]+)+\\\\?";
-        Pattern pattern = Pattern.compile(regex);
-        boolean isMatched = Pattern.matches(regex, imagepath);
-        if (!isMatched) throw new InvalidImagePathException(imagepath);
+        //String regex = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9._-]+)+\\\\?";
+        //Pattern pattern = Pattern.compile(regex);
+        //boolean isMatched = Pattern.matches(regex, imagepath);
+        //if (!isMatched) throw new InvalidImagePathException(imagepath);
         this.imagepath = imagepath;
     }
 
@@ -125,8 +126,8 @@ public class Product {
         if ("".equals(description)) throw new InvalidProductDescriptionException("Description cannot be empty!");
         else if (description.length() < 10)
             throw new InvalidProductDescriptionException("Description length has to be more than 10 char. Description is " + description);
-        else if (description.length() > 255)
-            throw new InvalidProductDescriptionException("Description length cannot be more than 255 char. Description is " + description + "(" + description.length() + ")");
+        else if (description.length() > 555)
+            throw new InvalidProductDescriptionException("Description length cannot be more than 555 char. Description is " + description + "(" + description.length() + ")");
         this.description = description;
     }
 
@@ -151,19 +152,19 @@ public class Product {
         this.id = id;
     }
 
-    public LocalDate getCreated_date() {
+    public Date getCreated_date() {
         return created_date;
     }
 
-    public void setCreated_date(LocalDate created_date) {
+    public void setCreated_date(Date created_date) {
         this.created_date = created_date;
     }
 
-    public LocalDate getSold_date() {
+    public Date getSold_date() {
         return sold_date;
     }
 
-    public void setSold_date(LocalDate sold_date) {
+    public void setSold_date(Date sold_date) {
         this.sold_date = sold_date;
     }
 }

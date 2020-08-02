@@ -12,7 +12,7 @@ public interface IProductDAO {
     Collection<Product> getNotAuthorizedProducts();
     Collection<Product> getAuthorizedProducts();
     Product getProductById(int id);
-    Product addProduct(Product newProduct, int userId);
+    Product addProduct(Product newProduct);
     boolean modifyProduct(Product product);
     boolean deleteProductById(int id);
 }

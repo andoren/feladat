@@ -42,8 +42,10 @@ public class ProductService implements IProductSerivce {
         return dao.getProductById(id);
     }
 
-    public Product addProduct(Product newProduct, int userId) {
-        return dao.addProduct(newProduct,userId);
+    public Product addProduct(Product newProduct) {
+        newProduct.setIsAccapted(false);
+        newProduct.setIsSold(false);
+        return dao.addProduct(newProduct);
     }
 
     public boolean modifyProduct(Product product) {

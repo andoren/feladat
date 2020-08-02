@@ -111,10 +111,9 @@ public class MysqlProductDAO implements IProductDAO  {
         return product;
     }
 
-    public Product addProduct(Product newProduct, int userId) {
+    public Product addProduct(Product newProduct) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        newProduct.setOwner(userDAO.getUserById(userId));
         session.persist(newProduct);
         session.getTransaction().commit();
         session.close();
