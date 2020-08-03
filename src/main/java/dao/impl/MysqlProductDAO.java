@@ -151,4 +151,13 @@ public class MysqlProductDAO implements IProductDAO  {
         return true;
 
     }
+    public boolean authProduct(Product product) {
+        product.setIsAccapted(true);
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(product);
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
 }

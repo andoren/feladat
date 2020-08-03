@@ -16,4 +16,5 @@ public interface IProductDAO {
     boolean modifyProduct(Product product);
     boolean deleteProductById(int id);
     boolean buyProduct(Product product, User user);
+    boolean authProduct(Product product);
 }

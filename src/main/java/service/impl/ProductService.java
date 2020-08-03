@@ -59,4 +59,8 @@ public class ProductService implements IProductSerivce {
     public boolean buyProduct(Product product, User user) {
         return dao.buyProduct(product,user);
     }
+
+    public boolean authProduct(Product product) {
+        return dao.authProduct(product);
+    }
 }

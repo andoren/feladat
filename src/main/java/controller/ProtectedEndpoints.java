@@ -84,4 +84,28 @@ public class ProtectedEndpoints {
         product.setSold_date(today.getTime());
         return Response.ok(productService.buyProduct(product,user)).build();
     }
+    @POST
+    @Path("/authproduct")
+    @Produces("application/json")
+    public Response authProduct(@HeaderParam("Authorization") String token, Product product){
+        User user = new User();
+        try {
+            String validToken = token.split(":")[1];
+            user = JWTHelper.decodeJWT(validToken);
+        }catch (JWTVerificationException ex){
+            return Response.ok("JWT token is invalid").status(403).build();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return Response.ok("\'error\': Ismeretlen szerver hiba").status(500).build();
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+
+        return Response.ok(productService.authProduct(product)).build();
+    }
 }
