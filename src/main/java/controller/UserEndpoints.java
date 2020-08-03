@@ -12,13 +12,14 @@ import helper.JWTHelper;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/")
-@RequestScoped
+@ApplicationScoped
 @Stateless
 public class UserEndpoints {
     @EJB

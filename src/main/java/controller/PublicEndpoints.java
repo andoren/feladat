@@ -9,6 +9,7 @@ import service.impl.ProductService;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -18,7 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 @Path("/public")
-@RequestScoped
+@ApplicationScoped
 @Stateless
 public class PublicEndpoints {
 

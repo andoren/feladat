@@ -55,4 +55,9 @@ public class ProductService implements IProductSerivce {
     public boolean deleteProductById(int id) {
         return dao.deleteProductById(id);
     }
+
+    @Override
+    public boolean buyProduct(Product product, int userId) {
+        return dao.buyProduct(product,userId);
+    }
 }

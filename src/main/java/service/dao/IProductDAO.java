@@ -15,4 +15,5 @@ public interface IProductDAO {
     Product addProduct(Product newProduct);
     boolean modifyProduct(Product product);
     boolean deleteProductById(int id);
+    boolean buyProduct(Product product, int userId);
 }

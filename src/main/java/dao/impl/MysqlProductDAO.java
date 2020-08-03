@@ -139,4 +139,9 @@ public class MysqlProductDAO implements IProductDAO  {
         session.close();
         return true;
     }
+
+    @Override
+    public boolean buyProduct(Product product, int userId) {
+        return false;
+    }
 }

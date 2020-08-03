@@ -4,17 +4,20 @@ import core.model.Product;
 import core.model.User;
 import core.service.IProductSerivce;
 import core.service.IUserService;
+import helper.JWTHelper;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 @Path("/protected")
-@RequestScoped
+@ApplicationScoped
 @Stateless
 public class ProtectedEndpoints {
+    JWTHelper jwtHelper = new JWTHelper();
     @EJB
     IProductSerivce productService;
     @EJB
