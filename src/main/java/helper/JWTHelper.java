@@ -6,6 +6,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import core.exceptions.InvalidEmailException;
+import core.exceptions.InvalidRealnameException;
+import core.exceptions.InvalidUsernameException;
 import core.model.Role;
 import core.model.User;
 
@@ -20,7 +23,7 @@ public class JWTHelper {
                     .withClaim("realname",user.getRealname())
                     .withClaim("email",user.getEmail())
                     .withClaim("role",user.getRole().name())
-                    .withIssuer("auth0")
+
                     .sign(algorithmHS);
             return token;
         } catch (JWTCreationException exception){
@@ -28,20 +31,22 @@ public class JWTHelper {
             return "";
         }
     }
-    public static User decodeJWT(String token){
-        try {
+    public static User decodeJWT(String token) throws JWTVerificationException, InvalidEmailException, InvalidRealnameException, InvalidUsernameException {
 
+            token = token.trim();
             JWTVerifier verifier = JWT.require(algorithmHS)
-                    .withIssuer("auth0")
                     .build();
             DecodedJWT jwt = verifier.verify(token);
             User user = new User();
             user.setId(jwt.getClaim("userId").asInt());
-            user.setRole(Role.valueOf(jwt.getClaim("role").toString()));
+            user.setEmail(jwt.getClaim("email").asString());
+            user.setRealname(jwt.getClaim("realname").asString());
+            user.setRole(Role.valueOf(jwt.getClaim("role").asString()));
+            user.setUsername(jwt.getClaim("username").asString());
+
             return user;
-        } catch (JWTVerificationException exception){
-            return new User();
-        }
+
+
 
     }
 }

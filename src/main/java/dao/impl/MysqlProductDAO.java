@@ -140,8 +140,15 @@ public class MysqlProductDAO implements IProductDAO  {
         return true;
     }
 
-    @Override
-    public boolean buyProduct(Product product, int userId) {
-        return false;
+    public boolean buyProduct(Product product, User user) {
+        product.setBuyer(user);
+        System.out.println(user);
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.merge(product);
+        session.getTransaction().commit();
+        session.close();
+        return true;
+
     }
 }

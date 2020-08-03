@@ -1,26 +1,31 @@
 package controller;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import core.exceptions.InvalidEmailException;
+import core.exceptions.InvalidRealnameException;
+import core.exceptions.InvalidUsernameException;
 import core.model.Product;
 import core.model.User;
 import core.service.IProductSerivce;
 import core.service.IUserService;
 import helper.JWTHelper;
-import jdk.nashorn.internal.ir.RuntimeNode;
-import org.wildfly.swarm.spi.runtime.annotations.Post;
+
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Request;
+
 import javax.ws.rs.core.Response;
+import java.util.Calendar;
+import java.util.Date;
 
 @Path("/protected")
 @ApplicationScoped
 @Stateless
 public class ProtectedEndpoints {
-    JWTHelper jwtHelper = new JWTHelper();
+
     @EJB
     IProductSerivce productService;
     @EJB
@@ -52,13 +57,31 @@ public class ProtectedEndpoints {
     public Response getUsers(){
         return Response.ok(userService.getAllUsers()).build();
     }
-    @Post
+    @POST
     @Path("/buyproduct")
     @Produces("application/json")
-    public Response buyProduct(@HeaderParam("Authorization") String token, int productId, int buyerId){
-        System.out.println("Raw token: "+token);
-        String validToken = token.split(":")[1];
-        System.out.println("Valid token: "+validToken);
-        return Response.ok().build();
+    public Response buyProduct(@HeaderParam("Authorization") String token, Product product){
+        User user = new User();
+        try {
+            String validToken = token.split(":")[1];
+            user = JWTHelper.decodeJWT(validToken);
+        }catch (JWTVerificationException ex){
+            return Response.ok("JWT token is invalid").status(403).build();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return Response.ok("\'error\': Ismeretlen szerver hiba").status(500).build();
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        product.setIsSold(true);
+        Calendar today = Calendar.getInstance();
+
+        product.setSold_date(today.getTime());
+        return Response.ok(productService.buyProduct(product,user)).build();
     }
 }

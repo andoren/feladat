@@ -16,7 +16,7 @@ public class Product {
 
     }
 
-    public Product(Integer id, String name, String description, Integer price, Boolean issold, Boolean isaccapted, String imagepath) throws InvalidProductNameException, InvalidProductDescriptionException, InvalidImagePathException, InvalidProductPriceException {
+    public Product(int id, String name, String description, int price, Boolean issold, Boolean isaccapted, String imagepath) throws InvalidProductNameException, InvalidProductDescriptionException, InvalidImagePathException, InvalidProductPriceException {
         setId(id);
         setName(name);
         setDescription(description);
@@ -26,7 +26,7 @@ public class Product {
         setImagepath(imagepath);
     }
 
-    public Product(Integer id, String name, String description, Integer price, Boolean issold, Boolean isaccapted, String imagepath,
+    public Product(int id, String name, String description, int price, Boolean issold, Boolean isaccapted, String imagepath,
                    Date created_date, Date sold_date) throws InvalidProductNameException, InvalidProductDescriptionException, InvalidImagePathException, InvalidProductPriceException {
         this(id, name, description, price, issold, isaccapted, imagepath);
         setCreated_date(created_date);
@@ -34,13 +34,13 @@ public class Product {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     @Column(name = "name")
     private String name;
     @Column(name="description")
     private String description;
     @Column(name="price")
-    private Integer price;
+    private int price;
     @Column(name="issold")
     private Boolean issold;
     @Column(name="isaccapted")
@@ -76,6 +76,20 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner")
     private User owner;
+
+
+
+    public User getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "buyer")
+    private User buyer;
     @Column(name = "created_date")
     private Date created_date;
     @Column(name = "sold_date")
@@ -109,7 +123,7 @@ public class Product {
         this.issold = issold;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -126,8 +140,8 @@ public class Product {
         if ("".equals(description)) throw new InvalidProductDescriptionException("Description cannot be empty!");
         else if (description.length() < 10)
             throw new InvalidProductDescriptionException("Description length has to be more than 10 char. Description is " + description);
-        else if (description.length() > 555)
-            throw new InvalidProductDescriptionException("Description length cannot be more than 555 char. Description is " + description + "(" + description.length() + ")");
+        else if (description.length() > 1000)
+            throw new InvalidProductDescriptionException("Description length cannot be more than 1000 char. Description is " + description + "(" + description.length() + ")");
         this.description = description;
     }
 
@@ -144,11 +158,11 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

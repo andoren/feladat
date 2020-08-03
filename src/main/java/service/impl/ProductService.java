@@ -56,8 +56,7 @@ public class ProductService implements IProductSerivce {
         return dao.deleteProductById(id);
     }
 
-    @Override
-    public boolean buyProduct(Product product, int userId) {
-        return dao.buyProduct(product,userId);
+    public boolean buyProduct(Product product, User user) {
+        return dao.buyProduct(product,user);
     }
 }
