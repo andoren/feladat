@@ -108,4 +108,15 @@ public class ProtectedEndpoints {
 
         return Response.ok(productService.authProduct(product)).build();
     }
+    @POST
+    @Path("/modifyuser")
+    @Produces("application/json")
+    public Response modufyUser(@HeaderParam("Authorization") String token, User user){
+        return Response.ok(userService.modifyUser(user)).build();
+    }
+    @DELETE
+    @Path("deleteuser/{id:[0-9][0-9]*}")
+    public Response deleteUser(@PathParam("id") int id){
+        return Response.ok(userService.deleteUserById(id)).build();
+    }
 }
