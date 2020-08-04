@@ -119,4 +119,10 @@ public class ProtectedEndpoints {
     public Response deleteUser(@PathParam("id") int id){
         return Response.ok(userService.deleteUserById(id)).build();
     }
+    @GET
+    @Path("getuserbyid/{id:[0-9][0-9]*}")
+    @Produces("application/json")
+    public Response getUserById(@PathParam("id") int id){
+        return Response.ok(userService.getUserById(id)).build();
+    }
 }
