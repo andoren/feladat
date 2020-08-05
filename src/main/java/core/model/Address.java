@@ -4,16 +4,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="Address")
 public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-    @Column(name="country")
-    private String country;
-    @Column(name="county")
-    private String county;
-    @Column(name="zip")
-    private int zip;
+
     public Address(){}
     public Address(String country, String county, int zip, String village, String street, String number) {
         this.country = country;
@@ -24,6 +15,23 @@ public class Address {
         this.number = number;
 
     }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+    @Column(name="country")
+    private String country;
+    @Column(name="county")
+    private String county;
+    @Column(name="zip")
+    private int zip;
+    @Column(name="village")
+    private String village;
+    @Column(name="street")
+    private String street;
+    @Column(name="number")
+    private String number;
+
 
     public int getId() {
         return id;
@@ -81,13 +89,9 @@ public class Address {
         this.number = number;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userid")
+    private User userid;
 
-    @Column(name="village")
-
-    private String village;
-    @Column(name="street")
-    private String street;
-    @Column(name="number")
-    private String number;
 
 }

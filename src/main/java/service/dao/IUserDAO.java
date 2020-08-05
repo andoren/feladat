@@ -1,6 +1,7 @@
 package service.dao;
 
 import core.exceptions.InvalidPassword;
+import core.model.Address;
 import core.model.Role;
 import core.model.User;
 
@@ -14,4 +15,5 @@ public interface IUserDAO {
     User addUser(User user);
     boolean deleteUserById(int id);
     User logIn(String username,String password) throws InvalidPassword;
+    Collection<Address> getUserAddresses(int id);
 }

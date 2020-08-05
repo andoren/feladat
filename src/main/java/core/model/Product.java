@@ -77,8 +77,17 @@ public class Product {
     @JoinColumn(name = "owner")
     private User owner;
 
+    public Address getBaddress() {
+        return baddress;
+    }
 
+    public void setBaddress(Address baddress) {
+        this.baddress = baddress;
+    }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "baddress")
+    private Address baddress;
     public User getBuyer() {
         return buyer;
     }

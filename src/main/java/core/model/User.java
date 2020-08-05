@@ -51,11 +51,7 @@ public class User {
     private String email;
     @Column(name="username")
     private String username;
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Address> addresses = new ArrayList<>();
+
 
     @Transient
     private String token;
@@ -65,7 +61,6 @@ public class User {
     public String getToken(){
         return this.token;
     }
-
     public String getEmail() {
         return email;
     }

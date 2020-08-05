@@ -15,7 +15,7 @@ public class RandomProductTest {
 
     MysqlProductDAO dao = new MysqlProductDAO();
     MysqlUserDAO userDAO = new MysqlUserDAO();
-
+    @Test
     public void getProducts(){
         Collection<Product> products = dao.getProducts();
         for (Product product:products
@@ -39,7 +39,7 @@ public class RandomProductTest {
             System.out.println(product.getName());
         }
     }
-
+    @Test
     public void addProduct() throws InvalidProductNameException, InvalidProductDescriptionException, InvalidImagePathException, InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException, InvalidProductPriceException {
         Product newProduct = new Product();
         newProduct.setName("Hibernate");

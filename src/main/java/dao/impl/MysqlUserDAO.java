@@ -1,6 +1,7 @@
 package dao.impl;
 
 import core.exceptions.InvalidPassword;
+import core.model.Address;
 import core.model.Product;
 import core.model.Role;
 import core.model.User;
@@ -17,6 +18,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.Collection;
+import java.util.List;
 
 @Stateless
 public class MysqlUserDAO implements IUserDAO {
@@ -25,6 +27,7 @@ public class MysqlUserDAO implements IUserDAO {
         configuration.configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(Product.class);
+        configuration.addAnnotatedClass(Address.class);
         StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         sessionFactory = configuration.buildSessionFactory(ssrb.build());
 
@@ -114,6 +117,21 @@ public class MysqlUserDAO implements IUserDAO {
         return new User();
     }
 
+    public List<Address> getUserAddresses(int id){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Address> criteria = builder.createQuery(Address.class);
+        Root<Address> addressRoot = criteria.from(Address.class);
+        Predicate likeRestriction = builder.and(
+                builder.equal(addressRoot.get("userid").get("id").as(Integer.class),id)
+        );
+        criteria.select(addressRoot).where(likeRestriction);
+        TypedQuery<Address> query = session.createQuery(criteria);
+        List addresses = query.getResultList();
+        session.close();
+        return addresses;
+    }
 
 
 

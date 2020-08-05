@@ -302,7 +302,6 @@ public class ProtectedEndpoints {
     }
     @GET
     @Path("getuserbyid/{id:[0-9][0-9]*}")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserById(@HeaderParam("Authorization") String token, @PathParam("id") int id){
         Response.ResponseBuilder builder = null;
@@ -314,6 +313,35 @@ public class ProtectedEndpoints {
                 responseObj.put("error", "You are not an administrator.");
                 builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
             }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
+    }
+
+    @GET
+    @Path("getuseraddresses")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAddresses(@HeaderParam("Authorization") String token){
+        Response.ResponseBuilder builder = null;
+        try{
+            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            builder = Response.ok(userService.getUserAddresses(getuser.getId()));
+
         }
         catch (JWTVerificationException e){
             Map<String, String> responseObj = new HashMap<>();

@@ -1301,231 +1301,246 @@
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="321" parent="283" name="FK_product_buyer_userid_idx">
+    <column id="321" parent="283" name="baddress">
+      <Position>12</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="322" parent="283" name="FK_product_buyer_userid_idx">
       <ColNames>buyer</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="322" parent="283" name="fk_product_owner_uderid_idx">
+    <index id="323" parent="283" name="fk_product_owner_uderid_idx">
       <ColNames>owner</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="323" parent="283" name="PRIMARY">
+    <index id="324" parent="283" name="fk_product_bought_address_id_idx">
+      <ColNames>baddress</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="325" parent="283" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="324" parent="283" name="FK_product_buyer_userid">
+    <foreign-key id="326" parent="283" name="FK_product_buyer_userid">
       <ColNames>buyer</ColNames>
       <RefSchemaName>feladat</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="325" parent="283" name="fk_product_owner_userid">
+    <foreign-key id="327" parent="283" name="fk_product_owner_userid">
       <ColNames>owner</ColNames>
       <RefSchemaName>feladat</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="326" parent="284" name="id">
+    <foreign-key id="328" parent="283" name="fk_product_bought_address_id">
+      <ColNames>baddress</ColNames>
+      <RefSchemaName>feladat</RefSchemaName>
+      <RefTableName>address</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="329" parent="284" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="284" name="username">
+    <column id="330" parent="284" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="284" name="password">
+    <column id="331" parent="284" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="284" name="realname">
+    <column id="332" parent="284" name="realname">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="284" name="role">
+    <column id="333" parent="284" name="role">
       <Position>5</Position>
       <DataType>varchar(5)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="284" name="email">
+    <column id="334" parent="284" name="email">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="332" parent="284" name="username_UNIQUE">
+    <index id="335" parent="284" name="username_UNIQUE">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="333" parent="284" name="PRIMARY">
+    <key id="336" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="334" parent="284" name="username_UNIQUE">
+    <key id="337" parent="284" name="username_UNIQUE">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="335" parent="285" name="userid">
+    <column id="338" parent="285" name="userid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="285" name="productid">
+    <column id="339" parent="285" name="productid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="337" parent="285" name="FK_usersproduct_user_id_idx">
+    <index id="340" parent="285" name="FK_usersproduct_user_id_idx">
       <ColNames>userid</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="338" parent="285" name="FK_usersproduct_product_id_idx">
+    <index id="341" parent="285" name="FK_usersproduct_product_id_idx">
       <ColNames>productid</ColNames>
       <Type>btree</Type>
     </index>
-    <foreign-key id="339" parent="285" name="FK_usersproduct_user_id">
+    <foreign-key id="342" parent="285" name="FK_usersproduct_user_id">
       <ColNames>userid</ColNames>
       <RefSchemaName>feladat</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="340" parent="285" name="FK_usersproduct_product_id">
+    <foreign-key id="343" parent="285" name="FK_usersproduct_product_id">
       <ColNames>productid</ColNames>
       <RefSchemaName>feladat</RefSchemaName>
       <RefTableName>product</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <argument id="341" parent="286" name="pusername">
+    <argument id="344" parent="286" name="pusername">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
     </argument>
-    <argument id="342" parent="286" name="ppassword">
+    <argument id="345" parent="286" name="ppassword">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="343" parent="286" name="prealname">
+    <argument id="346" parent="286" name="prealname">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
     </argument>
-    <argument id="344" parent="286" name="prole">
+    <argument id="347" parent="286" name="prole">
       <Position>4</Position>
       <DataType>varchar(5)|0s</DataType>
     </argument>
-    <argument id="345" parent="286" name="pemail">
+    <argument id="348" parent="286" name="pemail">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="346" parent="287">
+    <argument id="349" parent="287">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="347" parent="287" name="fname">
+    <argument id="350" parent="287" name="fname">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
     </argument>
-    <argument id="348" parent="287" name="fdesc">
+    <argument id="351" parent="287" name="fdesc">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="349" parent="287" name="fprice">
+    <argument id="352" parent="287" name="fprice">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="350" parent="287" name="fimagepath">
+    <argument id="353" parent="287" name="fimagepath">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="351" parent="288" name="pname">
+    <argument id="354" parent="288" name="pname">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
     </argument>
-    <argument id="352" parent="288" name="pdesc">
+    <argument id="355" parent="288" name="pdesc">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="353" parent="288" name="pprice">
+    <argument id="356" parent="288" name="pprice">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="354" parent="288" name="pimagepath">
+    <argument id="357" parent="288" name="pimagepath">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="355" parent="288" name="puserid">
+    <argument id="358" parent="288" name="puserid">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="356" parent="289" name="productid">
+    <argument id="359" parent="289" name="productid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="357" parent="290" name="productid">
+    <argument id="360" parent="290" name="productid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="358" parent="290" name="buyerid">
+    <argument id="361" parent="290" name="buyerid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="359" parent="294" name="userid">
+    <argument id="362" parent="294" name="userid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="360" parent="295" name="pname">
+    <argument id="363" parent="295" name="pname">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
     </argument>
-    <argument id="361" parent="295" name="pdesc">
+    <argument id="364" parent="295" name="pdesc">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="362" parent="295" name="pprice">
+    <argument id="365" parent="295" name="pprice">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="363" parent="295" name="pimagepath">
+    <argument id="366" parent="295" name="pimagepath">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="364" parent="295" name="pid">
+    <argument id="367" parent="295" name="pid">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="365" parent="296" name="pusername">
+    <argument id="368" parent="296" name="pusername">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
     </argument>
-    <argument id="366" parent="296" name="ppassword">
+    <argument id="369" parent="296" name="ppassword">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="367" parent="296" name="prealname">
+    <argument id="370" parent="296" name="prealname">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
     </argument>
-    <argument id="368" parent="296" name="prole">
+    <argument id="371" parent="296" name="prole">
       <Position>4</Position>
       <DataType>varchar(5)|0s</DataType>
     </argument>
-    <argument id="369" parent="296" name="pemail">
+    <argument id="372" parent="296" name="pemail">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="370" parent="296" name="uid">
+    <argument id="373" parent="296" name="uid">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </argument>

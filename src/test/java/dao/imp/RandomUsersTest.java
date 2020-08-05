@@ -41,7 +41,7 @@ public class RandomUsersTest {
         boolean result = dao.modifyUser(user);
         Assert.assertTrue(result);
     }
-    //@Test
+    @Test
     public void deleteUser(){
         boolean result = dao.deleteUserById(4);
         Assert.assertTrue(result);

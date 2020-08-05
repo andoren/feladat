@@ -1,5 +1,6 @@
 package dao.impl;
 
+import core.model.Address;
 import core.model.Product;
 import core.model.User;
 import org.hibernate.Session;
@@ -27,7 +28,7 @@ public class MysqlProductDAO implements IProductDAO  {
         configuration.configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(Product.class);
-
+        configuration.addAnnotatedClass(Address.class);
         StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         sessionFactory = configuration.buildSessionFactory(ssrb.build());
         userDAO=new MysqlUserDAO();
