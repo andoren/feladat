@@ -47,9 +47,10 @@ public class UserService implements IUserService {
         return dao.deleteUserById(id);
     }
 
-    public User logIn(String username, String password) throws InvalidPassword {
+    public User logIn(String username, String password) throws InvalidPassword, InvalidLoginException {
 
         User user = dao.logIn(username,password);
+        if(user.getEmail() == null) throw new InvalidLoginException("Hibás felhasználónév vagy jelszó");
         user.setToken(JWTHelper.generateJWT(user));
         return user;
     }

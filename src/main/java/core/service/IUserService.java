@@ -3,6 +3,7 @@ package core.service;
 import core.exceptions.InvalidPassword;
 import core.model.Role;
 import core.model.User;
+import service.impl.InvalidLoginException;
 
 import java.util.Collection;
 
@@ -13,5 +14,5 @@ public interface IUserService {
     User getUserById(int id);
     User addUser(User user);
     boolean deleteUserById(int id);
-    User logIn(String username,String password) throws InvalidPassword;
+    User logIn(String username,String password) throws InvalidPassword, InvalidLoginException;
 }

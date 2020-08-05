@@ -10,8 +10,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import service.dao.IUserDAO;
-
-
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -101,7 +99,7 @@ public class MysqlUserDAO implements IUserDAO {
     }
 
 
-    public User logIn(String username, String password) throws InvalidPassword {
+    public User logIn(String username, String password) throws InvalidPassword{
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         User user ;
