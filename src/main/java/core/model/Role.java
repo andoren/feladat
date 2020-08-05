@@ -1,6 +1,6 @@
 package core.model;
 
 public enum Role {
-user,
+    user,
     admin
 }

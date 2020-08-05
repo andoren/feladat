@@ -1,8 +1,7 @@
 package controller;
 
-import com.auth0.jwt.JWT;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.google.common.io.Files;
 import core.exceptions.InvalidEmailException;
 import core.exceptions.InvalidRealnameException;
 import core.exceptions.InvalidUsernameException;
@@ -17,13 +16,12 @@ import helper.JWTHelper;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.*;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,10 +106,10 @@ public class ProtectedEndpoints {
         Response.ResponseBuilder builder = null;
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
-            if(user.getRole() == Role.admin)builder = Response.ok(productService.getProductsByUserId(getUser));
+            if(user.getId() == id)builder = Response.ok(productService.getProductsByUserId(getUser));
             else{
                 Map<String, String> responseObj = new HashMap<>();
-                responseObj.put("error", "You are not administrator to see this page.");
+                responseObj.put("error", "These products are not yours! ;)");
                 builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
             }
         }
@@ -244,7 +242,7 @@ public class ProtectedEndpoints {
         Response.ResponseBuilder builder = null;
         try{
             User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
-            if(getuser.getRole() == Role.admin)builder = Response.ok(Response.ok(userService.modifyUser(user)));
+            if(getuser.getRole() == Role.admin)builder = Response.ok(userService.modifyUser(user));
             else{
                 Map<String, String> responseObj = new HashMap<>();
                 responseObj.put("error", "You are not an administrator.");
@@ -333,4 +331,5 @@ public class ProtectedEndpoints {
         }
         return builder.build();
     }
+
 }
