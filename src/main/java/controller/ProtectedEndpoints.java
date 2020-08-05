@@ -1,10 +1,13 @@
 package controller;
 
+import com.auth0.jwt.JWT;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import core.exceptions.InvalidEmailException;
 import core.exceptions.InvalidRealnameException;
 import core.exceptions.InvalidUsernameException;
 import core.model.Product;
+import core.model.Role;
 import core.model.User;
 import core.service.IProductSerivce;
 import core.service.IUserService;
@@ -17,9 +20,12 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Path("/protected")
 @ApplicationScoped
@@ -32,45 +38,162 @@ public class ProtectedEndpoints {
     IUserService userService;
     @POST
     @Path("/addproduct")
-    @Produces("application/json")
-    public Response getAuthProducts(Product product){
-        return Response.ok(productService.addProduct(product)
-        ).build();
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAuthProducts(@HeaderParam("Authorization") String token, Product product){
+        Response.ResponseBuilder builder = null;
+
+        try{
+            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            builder = Response.ok(productService.addProduct(product));
+
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
     }
     @GET
     @Path("/notauthproducts")
-    @Produces("application/json")
-    public Response getNotAuthProducts(){
-        return Response.ok(productService.getNotAuthorizedProducts()).build();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getNotAuthProducts(@HeaderParam("Authorization") String token){
+        Response.ResponseBuilder builder = null;
+        try{
+            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            if(user.getRole() == Role.admin)builder = Response.ok(productService.getNotAuthorizedProducts());
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You are not administrator to see this page.");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
     }
     @GET
     @Path("/getproductsbyuserid/{id:[0-9][0-9]*}")
-    @Produces("application/json")
-    public Response getProductsByUserId(@PathParam("id") int id){
-        User user = new User();
-        user.setId(id); ;
-        return Response.ok(productService.getProductsByUserId(user)).build();
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getProductsByUserId(@HeaderParam("Authorization") String token, @PathParam("id") int id){
+        User getUser = new User();
+        getUser.setId(id);
+        Response.ResponseBuilder builder = null;
+        try{
+            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            if(user.getRole() == Role.admin)builder = Response.ok(productService.getProductsByUserId(getUser));
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You are not administrator to see this page.");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
     }
     @GET
     @Path("/getusers")
-    @Produces("application/json")
-    public Response getUsers(){
-        return Response.ok(userService.getAllUsers()).build();
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUsers(@HeaderParam("Authorization") String token ){
+        Response.ResponseBuilder builder = null;
+        try{
+            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            if(user.getRole() == Role.admin)builder = Response.ok(userService.getAllUsers());
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You are not administrator to see this page.");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
+
     }
     @POST
     @Path("/buyproduct")
-    @Produces("application/json")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response buyProduct(@HeaderParam("Authorization") String token, Product product){
-        User user = new User();
-        try {
-            String validToken = token.split(":")[1];
-            user = JWTHelper.decodeJWT(validToken);
-        }catch (JWTVerificationException ex){
-            return Response.ok("JWT token is invalid").status(403).build();
+        Response.ResponseBuilder builder = null;
+        try{
+            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            product.setIsSold(true);
+            Calendar today = Calendar.getInstance();
+            product.setSold_date(today.getTime());
+            if(user.getId() != product.getOwner().getId())builder = Response.ok(productService.buyProduct(product,user));
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You cannot buy your own product!");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         }
         catch (Exception e){
-            e.printStackTrace();
-            return Response.ok("\'error\': Ismeretlen szerver hiba").status(500).build();
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         } catch (InvalidEmailException e) {
             e.printStackTrace();
         } catch (InvalidRealnameException e) {
@@ -78,26 +201,32 @@ public class ProtectedEndpoints {
         } catch (InvalidUsernameException e) {
             e.printStackTrace();
         }
-        product.setIsSold(true);
-        Calendar today = Calendar.getInstance();
-
-        product.setSold_date(today.getTime());
-        return Response.ok(productService.buyProduct(product,user)).build();
+        return builder.build();
     }
     @POST
     @Path("/authproduct")
-    @Produces("application/json")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response authProduct(@HeaderParam("Authorization") String token, Product product){
-        User user = new User();
-        try {
-            String validToken = token.split(":")[1];
-            user = JWTHelper.decodeJWT(validToken);
-        }catch (JWTVerificationException ex){
-            return Response.ok("JWT token is invalid").status(403).build();
+        Response.ResponseBuilder builder = null;
+        try{
+            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            if(user.getRole() == Role.admin)builder = Response.ok(productService.authProduct(product));
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You are not administrator to see this page.");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         }
         catch (Exception e){
-            e.printStackTrace();
-            return Response.ok("\'error\': Ismeretlen szerver hiba").status(500).build();
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         } catch (InvalidEmailException e) {
             e.printStackTrace();
         } catch (InvalidRealnameException e) {
@@ -105,24 +234,103 @@ public class ProtectedEndpoints {
         } catch (InvalidUsernameException e) {
             e.printStackTrace();
         }
-
-        return Response.ok(productService.authProduct(product)).build();
+        return builder.build();
     }
     @POST
     @Path("/modifyuser")
-    @Produces("application/json")
-    public Response modufyUser(@HeaderParam("Authorization") String token, User user){
-        return Response.ok(userService.modifyUser(user)).build();
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response modifyUser(@HeaderParam("Authorization") String token, User user){
+        Response.ResponseBuilder builder = null;
+        try{
+            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            if(getuser.getRole() == Role.admin)builder = Response.ok(Response.ok(userService.modifyUser(user)));
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You are not an administrator.");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
     }
     @DELETE
     @Path("deleteuser/{id:[0-9][0-9]*}")
-    public Response deleteUser(@PathParam("id") int id){
-        return Response.ok(userService.deleteUserById(id)).build();
+    public Response deleteUser(@HeaderParam("Authorization") String token,@PathParam("id") int id){
+        Response.ResponseBuilder builder = null;
+        try{
+            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            if(getuser.getRole() == Role.admin)builder = Response.ok(userService.deleteUserById(id));
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You are not an administrator.");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
     }
     @GET
     @Path("getuserbyid/{id:[0-9][0-9]*}")
-    @Produces("application/json")
-    public Response getUserById(@PathParam("id") int id){
-        return Response.ok(userService.getUserById(id)).build();
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserById(@HeaderParam("Authorization") String token, @PathParam("id") int id){
+        Response.ResponseBuilder builder = null;
+        try{
+            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            if(getuser.getRole() == Role.admin)builder = Response.ok(userService.getUserById(id));
+            else{
+                Map<String, String> responseObj = new HashMap<>();
+                responseObj.put("error", "You are not an administrator.");
+                builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
+            }
+        }
+        catch (JWTVerificationException e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", "The token is invalid");
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        catch (Exception e){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
     }
 }
