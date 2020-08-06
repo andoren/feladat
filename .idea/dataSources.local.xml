@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="feladat@localhost" uuid="cd012af4-a6d6-4ab9-b893-cb0d27c21bb0">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>*:feladat</introspection-schemas>
+    </data-source>
+    <data-source name="feladat@localhost [2]" uuid="4e27b4b3-4b66-4bd4-a22a-a2498c9311d3">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>
