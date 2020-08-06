@@ -109,10 +109,10 @@ public class Product {
     }
 
     public void setImagepath(String imagepath) throws InvalidImagePathException {
-        //String regex = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9._-]+)+\\\\?";
-        //Pattern pattern = Pattern.compile(regex);
-        //boolean isMatched = Pattern.matches(regex, imagepath);
-        //if (!isMatched) throw new InvalidImagePathException(imagepath);
+        String regex = "(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)";
+        Pattern pattern = Pattern.compile(regex);
+        boolean isMatched = Pattern.matches(regex, imagepath);
+        if (!isMatched) throw new InvalidImagePathException(imagepath);
         this.imagepath = imagepath;
     }
 
@@ -162,7 +162,7 @@ public class Product {
         if ("".equals(name)) throw new InvalidProductNameException("Name cannot be empty!");
         else if (name.length() < 3)
             throw new InvalidProductNameException("Name length has to be more than 2 char. Given name is " + name);
-        else if (name.length() > 20)
+        else if (name.length() > 50)
             throw new InvalidProductNameException("Name length cannot be more than 20 char. Given name is " + name + "(" + name.length() + ")");
         this.name = name;
     }

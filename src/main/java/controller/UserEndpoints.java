@@ -17,7 +17,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,15 +62,11 @@ public class UserEndpoints {
         try{
                 User newUser = new User(ua.getUser());
                 newUser = service.addUser(newUser);
-
-
                 for (Address address:ua.getAddresses()) {
                     address.setUserid(newUser);
                     service.addAddressToUser(address);
                 }
-
                 return Response.ok(newUser).build();
-
             }
 
         catch (Exception e){

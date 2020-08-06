@@ -59,10 +59,10 @@ public class ProtectedEndpoints {
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         } catch (InvalidEmailException e) {
             e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
-            e.printStackTrace();
+        } catch (InvalidRealnameException ex) {
+            ex.printStackTrace();
+        } catch (InvalidUsernameException ex2) {
+            ex2.printStackTrace();
         }
         return builder.build();
     }
@@ -103,15 +103,13 @@ public class ProtectedEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsByUserId(@HeaderParam("Authorization") String token, @PathParam("id") int id){
-        User getUser = new User();
-        getUser.setId(id);
         Response.ResponseBuilder builder = null;
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
-            if(user.getRole() == Role.admin)builder = Response.ok(productService.getProductsByUserId(getUser));
+            if(user.getId() == id)builder = Response.ok(productService.getProductsByUserId(user));
             else{
                 Map<String, String> responseObj = new HashMap<>();
-                responseObj.put("error", "You are not administrator to see this page.");
+                responseObj.put("error", "No no no! I'm watching you !;)");
                 builder = Response.status(Response.Status.FORBIDDEN).entity(responseObj);
             }
         }
@@ -337,7 +335,7 @@ public class ProtectedEndpoints {
     @Path("getuseraddresses")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAddresses(@HeaderParam("Authorization") String token){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.BAD_REQUEST);
         try{
             User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
             builder = Response.ok(userService.getUserAddresses(getuser.getId()));
