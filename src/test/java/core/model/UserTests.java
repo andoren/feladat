@@ -24,32 +24,7 @@ public class UserTests {
 
     @Test(expected = InvalidPassword.class)
     public void TooLongPassword() throws InvalidPassword {
-        user.setPassword("a#2A0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    }
-
-    @Test(expected = InvalidPassword.class)
-    public void NoSpecialCharPassword() throws InvalidPassword {
-        user.setPassword("Feladaat2020");
-    }
-
-    @Test(expected = InvalidPassword.class)
-    public void NoUpperCharPassword() throws InvalidPassword {
-        user.setPassword("feladat2020#");
-    }
-
-    @Test(expected = InvalidPassword.class)
-    public void NoLowerChar() throws InvalidPassword {
-        user.setPassword("FELADAT2020#");
-    }
-
-    @Test(expected = InvalidPassword.class)
-    public void HasSpace() throws InvalidPassword {
-        user.setPassword("FELADAT 2020#");
-    }
-
-    @Test(expected = InvalidPassword.class)
-    public void HasTab() throws InvalidPassword {
-        user.setPassword("Feladat   2020#");
+        user.setPassword("a#2A0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2A0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2A0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test

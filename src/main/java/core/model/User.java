@@ -6,6 +6,8 @@ import core.exceptions.InvalidRealnameException;
 import core.exceptions.InvalidUsernameException;
 import org.hibernate.annotations.Fetch;
 import core.model.Address;
+import service.impl.InvalidLoginException;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +93,7 @@ public class User {
         return password;
     }
     public void setPassword(String password) throws InvalidPassword {
-
+        if(password.length() < 8 || password.length() > 30) throw new InvalidPassword("A jelszó 8 és 16 karakter között lehet.");
         this.password = password;
     }
     public String getRealname() {
