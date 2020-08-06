@@ -1,6 +1,7 @@
 package service.impl;
 
 import core.exceptions.InvalidPassword;
+import core.model.Address;
 import core.model.Role;
 import core.model.User;
 import core.service.IUserService;
@@ -53,6 +54,16 @@ public class UserService implements IUserService {
         if(user.getEmail() == null) throw new InvalidLoginException("Hibás felhasználónév vagy jelszó");
         user.setToken(JWTHelper.generateJWT(user));
         return user;
+    }
+
+
+    public Collection<Address> getUserAddresses(int id) {
+        return dao.getUserAddresses(id);
+    }
+
+
+    public boolean addAddressToUser(Address address) {
+        return dao.addAddressToUser(address);
     }
 
 }

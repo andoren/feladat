@@ -5,7 +5,7 @@ import core.exceptions.InvalidPassword;
 import core.exceptions.InvalidRealnameException;
 import core.exceptions.InvalidUsernameException;
 import org.hibernate.annotations.Fetch;
-
+import core.model.Address;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +51,8 @@ public class User {
     private String email;
     @Column(name="username")
     private String username;
+
+
     @Transient
     private String token;
     public void setToken(String token){
@@ -59,7 +61,6 @@ public class User {
     public String getToken(){
         return this.token;
     }
-
     public String getEmail() {
         return email;
     }

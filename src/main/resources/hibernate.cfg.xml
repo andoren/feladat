@@ -14,6 +14,7 @@
         <mapping class="core.model.Product" />
         <mapping class="core.model.User" />
         <mapping class="core.model.Role" />
+        <mapping class="core.model.Address" />
     </session-factory>
 
 </hibernate-configuration>
