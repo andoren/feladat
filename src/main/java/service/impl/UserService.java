@@ -19,7 +19,7 @@ public class UserService implements IUserService {
     private IUserDAO dao;
 
     public UserService(){
-        dao = new MysqlUserDAO();
+
     }
     public Collection<User> getAllUsers() {
         return dao.getAllUsers();
@@ -40,7 +40,7 @@ public class UserService implements IUserService {
     public User addUser(User user) {
 
         User newuser = dao.addUser(user);
-        user.setToken(JWTHelper.generateJWT(newuser));
+
         return newuser;
     }
 
@@ -52,7 +52,7 @@ public class UserService implements IUserService {
 
         User user = dao.logIn(username,password);
         if(user.getEmail() == null) throw new InvalidLoginException("Hibás felhasználónév vagy jelszó");
-        user.setToken(JWTHelper.generateJWT(user));
+
         return user;
     }
 

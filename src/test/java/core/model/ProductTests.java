@@ -6,6 +6,8 @@ import org.junit.Before;
 import core.exceptions.*;
 import org.junit.Test;
 
+import java.util.Date;
+
 public class ProductTests {
     Product targetProduct;
     @Before
@@ -69,5 +71,71 @@ public class ProductTests {
     @Test(expected = InvalidProductPriceException.class)
     public void NegativePrice() throws InvalidProductPriceException {
         targetProduct.setPrice(-1);
+    }
+    @Test
+    public void setIsAccapted(){
+        targetProduct.setIsAccapted(true);
+        boolean result = targetProduct.getIsAccapted();
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void getIsAccapted(){
+        targetProduct.setIsAccapted(true);
+    }
+    @Test
+    public void setIsSold(){
+        targetProduct.setIsSold(true);
+        boolean result = targetProduct.getIssold();
+        Assert.assertTrue(result);
+    }
+
+
+    @Test
+    public void getAddress(){
+        targetProduct.setBaddress(new Address());
+        Address address = targetProduct.getBaddress();
+        Assert.assertTrue(address != null);
+    }
+    @Test
+    public void setSoldDate(){
+        targetProduct.setSold_date(new Date());
+
+        Assert.assertTrue(targetProduct.getSold_date() != null);
+    }
+    @Test
+    public void setCreatedDate(){
+        targetProduct.setCreated_date(new Date());
+
+        Assert.assertTrue(targetProduct.getCreated_date() != null);
+    }
+    @Test
+    public void setBuyer(){
+        targetProduct.setBuyer(new User());
+
+        Assert.assertTrue(targetProduct.getBuyer() != null);
+    }
+    @Test
+    public void setOwner(){
+        targetProduct.setOwner(new User());
+
+        Assert.assertTrue(targetProduct.getOwner() != null);
+    }
+    @Test
+    public void setId(){
+        targetProduct.setId(1);
+
+        Assert.assertTrue(targetProduct.getId() == 1);
+    }
+    @Test(expected = core.exceptions.InvalidImagePathException.class)
+    public void setImagePath() throws InvalidImagePathException {
+        targetProduct.setImagepath("kiscica");
+
+
+    }
+    @Test()
+    public void setImagePathNoError() throws InvalidImagePathException {
+        targetProduct.setImagepath("https://imagepath.jpg");
+        Assert.assertTrue(targetProduct.getImagepath() != null);
+
     }
 }

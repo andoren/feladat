@@ -36,6 +36,7 @@ public class ProductServiceTest {
     @TestSubject
     private IProductSerivce service = new ProductService();
 
+
     @Before
     public void init() throws InvalidProductDescriptionException, InvalidImagePathException, InvalidProductNameException, InvalidProductPriceException, InvalidEmailException, InvalidPassword, InvalidUsernameException, InvalidRealnameException {
         goodProduct = new Product();

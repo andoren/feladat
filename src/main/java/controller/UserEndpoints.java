@@ -9,6 +9,7 @@ import core.model.LoginData;
 import core.model.User;
 import core.model.UserAndAdress;
 import core.service.IUserService;
+import helper.IJWTHelper;
 import service.impl.InvalidLoginException;
 
 import javax.ejb.EJB;
@@ -27,7 +28,8 @@ import java.util.Map;
 public class UserEndpoints {
     @EJB
     IUserService service ;
-
+    @EJB
+    IJWTHelper JWTHelper;
     @POST
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -35,6 +37,7 @@ public class UserEndpoints {
     public Response Login(LoginData data){
         try{
             User currentUser = service.logIn(data.getUsername(),data.getPassword());
+            currentUser.setToken(JWTHelper.generateJWT(currentUser));
                 return Response.ok(currentUser).build();
         }
         catch (InvalidPassword e) {
@@ -66,6 +69,7 @@ public class UserEndpoints {
                     address.setUserid(newUser);
                     service.addAddressToUser(address);
                 }
+                 newUser.setToken(JWTHelper.generateJWT(newUser));
                 return Response.ok(newUser).build();
             }
 

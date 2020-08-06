@@ -4,6 +4,7 @@ import core.exceptions.InvalidEmailException;
 import core.exceptions.InvalidPassword;
 import core.exceptions.InvalidRealnameException;
 import core.exceptions.InvalidUsernameException;
+import core.model.Address;
 import core.model.Role;
 import core.model.User;
 import org.easymock.*;
@@ -12,8 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import service.dao.IUserDAO;
+import service.impl.InvalidLoginException;
 import service.impl.UserService;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -21,6 +24,7 @@ import java.util.List;
 import static org.easymock.EasyMock.same;
 @RunWith(EasyMockRunner.class)
 public class UserServiceTest {
+
     @Mock(type = MockType.STRICT, name = "userDao", fieldName = "dao")
     private IUserDAO dao;
     @TestSubject
@@ -30,9 +34,14 @@ public class UserServiceTest {
     User exceptionUser;
     User goodUser;
     User userWithoutAnything;
+    ArrayList<Address> addresses;
+    Address newAddress;
     @Before
     public void init() throws InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException, InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException {
-
+        addresses = new ArrayList<Address>();
+         addresses.add(new Address());
+         addresses.add(new Address());
+        newAddress = new Address();
         exceptionUser = new User(10,"hibasuser","12341234","hibA 2020","hiba@gmail.com", Role.admin);
         goodUser = new User(10,"gooduser","12341234#","hibA 2020","hiba@gmail.com", Role.admin);
         userWithoutAnything = new User();
@@ -49,6 +58,9 @@ public class UserServiceTest {
         EasyMock.expect(dao.deleteUserById(1)).andReturn(true).anyTimes();
         EasyMock.expect(dao.modifyUser(same(goodUser))).andReturn(true).anyTimes();
         EasyMock.expect(dao.getUserById(1)).andReturn(goodUser).anyTimes();
+        EasyMock.expect(dao.logIn(same("testsub"),same("Feladat2020&"))).andReturn(goodUser).anyTimes();
+        EasyMock.expect(dao.getUserAddresses(1)).andReturn(addresses).anyTimes();
+        EasyMock.expect(dao.addAddressToUser(newAddress)).andReturn(true).anyTimes();
         EasyMock.replay(dao);
     }
     @Test
@@ -81,5 +93,19 @@ public class UserServiceTest {
         User user = service.getUserById(1);
         Assert.assertEquals(user,goodUser);
     }
-
+    @Test
+    public void logIn() throws InvalidPassword, InvalidLoginException {
+        User result = service.logIn("testsub","Feladat2020&");
+        Assert.assertEquals(goodUser,result);
+    }
+    @Test
+    public void getUserAddresses(){
+        Collection<Address> result = service.getUserAddresses(1);
+        Assert.assertEquals(addresses.size(),result.size());
+    }
+    @Test
+    public void addAddressToUser(){
+        boolean result  = service.addAddressToUser(newAddress);
+        Assert.assertTrue(result);
+    }
 }

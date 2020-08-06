@@ -12,9 +12,12 @@ import core.exceptions.InvalidUsernameException;
 import core.model.Role;
 import core.model.User;
 
-public class JWTHelper {
+import javax.ejb.Stateless;
+
+@Stateless
+public class JWTHelper implements IJWTHelper{
     static Algorithm algorithmHS = Algorithm.HMAC256("secret");
-    public static  String generateJWT(User user){
+    public  String generateJWT(User user){
         try {
 
             String token = JWT.create()
@@ -23,7 +26,6 @@ public class JWTHelper {
                     .withClaim("realname",user.getRealname())
                     .withClaim("email",user.getEmail())
                     .withClaim("role",user.getRole().name())
-
                     .sign(algorithmHS);
             return token;
         } catch (JWTCreationException exception){
@@ -31,8 +33,7 @@ public class JWTHelper {
             return "";
         }
     }
-    public static User decodeJWT(String token) throws JWTVerificationException, InvalidEmailException, InvalidRealnameException, InvalidUsernameException {
-
+    public User decodeJWT(String token) throws JWTVerificationException, InvalidEmailException, InvalidRealnameException, InvalidUsernameException {
             token = token.trim();
             JWTVerifier verifier = JWT.require(algorithmHS)
                     .build();
@@ -43,10 +44,6 @@ public class JWTHelper {
             user.setRealname(jwt.getClaim("realname").asString());
             user.setRole(Role.valueOf(jwt.getClaim("role").asString()));
             user.setUsername(jwt.getClaim("username").asString());
-
             return user;
-
-
-
     }
 }

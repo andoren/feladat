@@ -11,6 +11,7 @@ import core.model.Role;
 import core.model.User;
 import core.service.IProductSerivce;
 import core.service.IUserService;
+import helper.IJWTHelper;
 import helper.JWTHelper;
 
 
@@ -36,6 +37,8 @@ public class ProtectedEndpoints {
     IProductSerivce productService;
     @EJB
     IUserService userService;
+    @EJB
+    IJWTHelper JWTHelper;
     @POST
     @Path("/addproduct")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -59,10 +62,10 @@ public class ProtectedEndpoints {
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         } catch (InvalidEmailException e) {
             e.printStackTrace();
-        } catch (InvalidRealnameException ex) {
-            ex.printStackTrace();
-        } catch (InvalidUsernameException ex2) {
-            ex2.printStackTrace();
+        } catch (InvalidRealnameException e) {
+            e.printStackTrace();
+        } catch (InvalidUsernameException e) {
+            e.printStackTrace();
         }
         return builder.build();
     }
