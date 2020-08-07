@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import service.dao.IUserDAO;
-import service.impl.InvalidLoginException;
+import service.impl.expections.InvalidLoginException;
 import service.impl.UserService;
 
 import java.util.ArrayList;
@@ -30,15 +30,15 @@ public class UserServiceTest {
     @TestSubject
     private UserService service = new UserService();
 
-    List<User> dummyDB;
-    User exceptionUser;
-    User goodUser;
-    User userWithoutAnything;
-    ArrayList<Address> addresses;
-    Address newAddress;
+    private List<User> dummyDB;
+    private User exceptionUser;
+    private User goodUser;
+    private User userWithoutAnything;
+    private ArrayList<Address> addresses;
+    private Address newAddress;
     @Before
-    public void init() throws InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException, InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException {
-        addresses = new ArrayList<Address>();
+    public void init() throws InvalidUsernameException, InvalidEmailException, InvalidPassword, InvalidRealnameException {
+        addresses = new ArrayList<>();
          addresses.add(new Address());
          addresses.add(new Address());
         newAddress = new Address();
@@ -81,12 +81,12 @@ public class UserServiceTest {
     @Test
     public void deleteUser(){
         boolean result = service.deleteUserById(1);
-        Assert.assertEquals(true,result);
+        Assert.assertTrue(result);
     }
     @Test
     public void modifyUser(){
         boolean result = service.modifyUser(goodUser);
-        Assert.assertEquals(true,result);
+        Assert.assertTrue(result);
     }
     @Test
     public void getUserById(){

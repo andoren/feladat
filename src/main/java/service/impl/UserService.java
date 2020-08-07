@@ -5,9 +5,8 @@ import core.model.Address;
 import core.model.Role;
 import core.model.User;
 import core.service.IUserService;
-import dao.impl.MysqlUserDAO;
-import helper.JWTHelper;
 import service.dao.IUserDAO;
+import service.impl.expections.InvalidLoginException;
 
 
 import javax.ejb.EJB;
@@ -39,9 +38,9 @@ public class UserService implements IUserService {
 
     public User addUser(User user) {
 
-        User newuser = dao.addUser(user);
 
-        return newuser;
+
+        return dao.addUser(user);
     }
 
     public boolean deleteUserById(int id) {

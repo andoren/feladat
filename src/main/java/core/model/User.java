@@ -4,13 +4,8 @@ import core.exceptions.InvalidEmailException;
 import core.exceptions.InvalidPassword;
 import core.exceptions.InvalidRealnameException;
 import core.exceptions.InvalidUsernameException;
-import org.hibernate.annotations.Fetch;
-import core.model.Address;
-import service.impl.InvalidLoginException;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 @Entity
@@ -93,7 +88,7 @@ public class User {
         return password;
     }
     public void setPassword(String password) throws InvalidPassword {
-        if(password.length() < 8 || password.length() > 30) throw new InvalidPassword("A jelszó 8 és 16 karakter között lehet.");
+        if(password.length() < 8 || password.length() > 50) throw new InvalidPassword("A jelszó 8 és 16 karakter között lehet.");
         this.password = password;
     }
     public String getRealname() {
@@ -113,13 +108,13 @@ public class User {
         this.role = role;
     }
     public String toString(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Username: ").append(this.getUsername()).append("\n")
+        StringBuilder string= new StringBuilder();
+        string.append("Username: ").append(this.getUsername()).append("\n")
                 .append("Realname: ").append(this.getRealname()).append("\n")
                 .append("Password: ").append(this.getPassword()).append("\n")
                 .append("Email: ").append(this.getEmail()).append("\n")
                 .append("Role: ").append(this.getRole().name()).append("\n");
 
-        return stringBuilder.toString();
+        return string.toString();
     }
 }

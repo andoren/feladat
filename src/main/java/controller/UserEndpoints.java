@@ -10,7 +10,7 @@ import core.model.User;
 import core.model.UserAndAdress;
 import core.service.IUserService;
 import helper.IJWTHelper;
-import service.impl.InvalidLoginException;
+import service.impl.expections.InvalidLoginException;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -27,9 +27,9 @@ import java.util.Map;
 @Stateless
 public class UserEndpoints {
     @EJB
-    IUserService service ;
+    private IUserService service ;
     @EJB
-    IJWTHelper JWTHelper;
+    private IJWTHelper JWTHelper;
     @POST
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -38,18 +38,14 @@ public class UserEndpoints {
         try{
             User currentUser = service.logIn(data.getUsername(),data.getPassword());
             currentUser.setToken(JWTHelper.generateJWT(currentUser));
-                return Response.ok(currentUser).build();
+            return Response.ok(currentUser).build();
         }
-        catch (InvalidPassword e) {
+        catch (InvalidPassword |InvalidLoginException  e) {
             Map<String,String> responseObj= new HashMap<>();
             responseObj.put("error",e.getMessage());
             return Response.status(Response.Status.FORBIDDEN).entity(responseObj).build();
         }
-         catch (InvalidLoginException e) {
-             Map<String,String> responseObj= new HashMap<>();
-             responseObj.put("error",e.getMessage());
-             return Response.status(Response.Status.FORBIDDEN).entity(responseObj).build();
-        }catch (Exception e){
+         catch (Exception e){
             e.printStackTrace();
             Map<String,String> responseObj= new HashMap<>();
             responseObj.put("error",e.getMessage());
@@ -78,20 +74,10 @@ public class UserEndpoints {
             Map<String,String> responseObj= new HashMap<>();
             responseObj.put("error",e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(responseObj).build();
-        } catch (InvalidEmailException e) {
+        } catch (InvalidRealnameException | InvalidUsernameException|InvalidEmailException e) {
             e.printStackTrace();
             Map<String,String> responseObj= new HashMap<>();
             responseObj.put("error",e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(responseObj).build();
-        } catch (InvalidRealnameException ex) {
-            ex.printStackTrace();
-            Map<String,String> responseObj= new HashMap<>();
-            responseObj.put("error",ex.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(responseObj).build();
-        } catch (InvalidUsernameException ex2) {
-            ex2.printStackTrace();
-            Map<String,String> responseObj= new HashMap<>();
-            responseObj.put("error",ex2.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).entity(responseObj).build();
         }
 

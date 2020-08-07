@@ -34,17 +34,17 @@ import java.util.Map;
 public class ProtectedEndpoints {
 
     @EJB
-    IProductSerivce productService;
+    private IProductSerivce productService;
     @EJB
-    IUserService userService;
+    private IUserService userService;
     @EJB
-    IJWTHelper JWTHelper;
+    private IJWTHelper JWTHelper;
     @POST
     @Path("/addproduct")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAuthProducts(@HeaderParam("Authorization") String token, Product product){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
 
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
@@ -60,11 +60,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException |InvalidRealnameException | InvalidUsernameException e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -73,7 +69,7 @@ public class ProtectedEndpoints {
     @Path("/notauthproducts")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNotAuthProducts(@HeaderParam("Authorization") String token){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
             if(user.getRole() == Role.admin)builder = Response.ok(productService.getNotAuthorizedProducts());
@@ -92,11 +88,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException | InvalidRealnameException | InvalidUsernameException e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -106,7 +98,7 @@ public class ProtectedEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsByUserId(@HeaderParam("Authorization") String token, @PathParam("id") int id){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
             if(user.getId() == id)builder = Response.ok(productService.getProductsByUserId(user));
@@ -125,11 +117,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException |InvalidRealnameException |InvalidUsernameException  e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -139,7 +127,7 @@ public class ProtectedEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUsers(@HeaderParam("Authorization") String token ){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
             if(user.getRole() == Role.admin)builder = Response.ok(userService.getAllUsers());
@@ -158,11 +146,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException |InvalidRealnameException | InvalidUsernameException e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -173,13 +157,13 @@ public class ProtectedEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response buyProduct(@HeaderParam("Authorization") String token, Product product){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
             product.setIsSold(true);
             Calendar today = Calendar.getInstance();
             product.setSold_date(today.getTime());
-            if(user.getId() != product.getOwner().getId())builder = Response.ok(productService.buyProduct(product,user));
+            if(!user.getId().equals(product.getOwner().getId()))builder = Response.ok(productService.buyProduct(product,user));
             else{
                 Map<String, String> responseObj = new HashMap<>();
                 responseObj.put("error", "You cannot buy your own product!");
@@ -195,11 +179,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException | InvalidRealnameException|InvalidUsernameException e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -209,7 +189,7 @@ public class ProtectedEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response authProduct(@HeaderParam("Authorization") String token, Product product){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User user = JWTHelper.decodeJWT(token.split(":")[1]);
             if(user.getRole() == Role.admin)builder = Response.ok(productService.authProduct(product));
@@ -228,11 +208,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException |InvalidRealnameException | InvalidUsernameException e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -242,10 +218,10 @@ public class ProtectedEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response modifyUser(@HeaderParam("Authorization") String token, User user){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
-            if(getuser.getRole() == Role.admin)builder = Response.ok(Response.ok(userService.modifyUser(user)));
+            if(getuser.getRole() == Role.admin)builder = Response.ok(userService.modifyUser(user));
             else{
                 Map<String, String> responseObj = new HashMap<>();
                 responseObj.put("error", "You are not an administrator.");
@@ -261,11 +237,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException | InvalidRealnameException| InvalidUsernameException e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -273,7 +245,7 @@ public class ProtectedEndpoints {
     @DELETE
     @Path("deleteuser/{id:[0-9][0-9]*}")
     public Response deleteUser(@HeaderParam("Authorization") String token,@PathParam("id") int id){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
             if(getuser.getRole() == Role.admin)builder = Response.ok(userService.deleteUserById(id));
@@ -292,11 +264,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException | InvalidRealnameException| InvalidUsernameException e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -305,7 +273,7 @@ public class ProtectedEndpoints {
     @Path("getuserbyid/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserById(@HeaderParam("Authorization") String token, @PathParam("id") int id){
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
             User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
             if(getuser.getRole() == Role.admin)builder = Response.ok(userService.getUserById(id));
@@ -324,11 +292,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException | InvalidRealnameException|InvalidUsernameException  e) {
             e.printStackTrace();
         }
         return builder.build();
@@ -353,11 +317,7 @@ public class ProtectedEndpoints {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        } catch (InvalidRealnameException e) {
-            e.printStackTrace();
-        } catch (InvalidUsernameException e) {
+        } catch (InvalidEmailException |InvalidRealnameException |InvalidUsernameException  e) {
             e.printStackTrace();
         }
         return builder.build();

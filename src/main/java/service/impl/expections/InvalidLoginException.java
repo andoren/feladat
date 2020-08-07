@@ -1,7 +1,7 @@
-package service.impl;
+package service.impl.expections;
 
 public class InvalidLoginException extends Exception {
-    InvalidLoginException(String msg){
+    public InvalidLoginException(String msg){
         super(msg);
     }
 }

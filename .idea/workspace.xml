@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20e3bca2-2ba7-47bb-b518-b90ee2beeb92" name="Default" comment="most már csak a saját termékeiket tudják megkapni a userek nem játszhatják ki, product name hossza módosítva és a image regex javítva. UserEndpointbol a collection import kivéve">
-      <change afterPath="$PROJECT_DIR$/src/main/java/helper/IJWTHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/controller/ProtectedEndPointsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/core/model/AddressTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/helper/JWTTest.java" afterDir="false" />
+    <list default="true" id="20e3bca2-2ba7-47bb-b518-b90ee2beeb92" name="Default" comment="a modifyuser javítva a controllerbe mert rossz responet adott vissza. InvalidLoginExcpetion átrakva exceptions mappába. User jelszó karakter növélse sha1 miatt. éés a password lerövidítva amit visszadunk frontendnek, pár warning javítva a controllerekben">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.thorntail-runner-cache/resolution-cache" beforeDir="false" afterPath="$PROJECT_DIR$/.thorntail-runner-cache/resolution-cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProtectedEndpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProtectedEndpoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helper/JWTHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helper/JWTHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/MysqlUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/MysqlUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/InvalidLoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/expections/InvalidLoginException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/model/ProductTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/model/ProductTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dao/imp/ProductServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/imp/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/ProtectedEndPointsTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/dao/imp/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/imp/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/ProtectedEndpoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ProtectedEndpoints.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/UserEndpoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/UserEndpoints.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/helper/JWTHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/helper/JWTHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/service/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/service/IUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/impl/MysqlUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/impl/MysqlUserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/impl/InvalidLoginException.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/service/impl/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/impl/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/core/model/ProductTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/core/model/ProductTests.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,6 +31,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/thorn$JWTTest.ic" NAME="JWTTest Coverage Results" MODIFIED="1596726148046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>helper.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/thorn$All_in_thorn.ic" NAME="All in thorn Coverage Results" MODIFIED="1596733699839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/thorn$core_model_in_feladat.ic" NAME="core.model in feladat Coverage Results" MODIFIED="1596723491315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>core.model.*</FILTER>
@@ -38,20 +41,18 @@
     <SUITE FILE_PATH="coverage/thorn$ProductServiceTest.ic" NAME="ProductServiceTest Coverage Results" MODIFIED="1596723693618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dao.imp.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/thorn$ProductTests.ic" NAME="ProductTests Coverage Results" MODIFIED="1596732942357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>core.model.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/thorn$ProtectedEndPointsTest.ic" NAME="ProtectedEndPointsTest Coverage Results" MODIFIED="1596734696515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/thorn$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1596724451093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dao.imp.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/thorn$AddressTest.ic" NAME="AddressTest Coverage Results" MODIFIED="1596732956433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>core.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/thorn$JWTTest.ic" NAME="JWTTest Coverage Results" MODIFIED="1596726148046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>helper.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/thorn$Thorntail.ic" NAME="Thorntail Coverage Results" MODIFIED="1596279487589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/thorn$ProductTests.ic" NAME="ProductTests Coverage Results" MODIFIED="1596732942357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/feladat$All_in_thorn.ic" NAME="All in thorn Coverage Results" MODIFIED="1596780203740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/thorn$AddressTest.ic" NAME="AddressTest Coverage Results" MODIFIED="1596732956433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>core.model.*</FILTER>
     </SUITE>
   </component>
@@ -77,8 +78,8 @@
       <file leaf-file-name="ProtectedEndpoints.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/ProtectedEndpoints.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="213" selection-start-line="213" selection-end-line="213" />
+            <state relative-caret-position="1001">
+              <caret line="275" column="98" selection-start-line="275" selection-start-column="98" selection-end-line="275" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,11 +87,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlockJUnit4ClassRunner.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.13/junit-4.13.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/dao/imp/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="229">
+              <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserEndpoints.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/core/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1802#1803#0" expanded="true" />
+                <element signature="e#1836#1837#0" expanded="true" />
+                <element signature="method#setRealname#0;class#User#0" />
+                <element signature="method#toString#0;class#User#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,52 +130,30 @@
       <file leaf-file-name="MysqlUserDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/MysqlUserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="22" selection-start-line="22" selection-end-line="22" selection-end-column="10" />
+            <state relative-caret-position="102">
+              <caret line="24" column="10" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProtectedEndPointsTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/controller/ProtectedEndPointsTest.java">
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="357">
+              <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/ProductService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="58">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JWTTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/helper/JWTTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JWTHelper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/helper/JWTHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductServiceTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/dao/imp/ProductServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#675#676#0" expanded="true" />
+                <element signature="e#1427#1428#0" expanded="true" />
+                <element signature="e#1478#1479#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,10 +164,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>null;</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -175,26 +190,28 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/impl/InvalidLoginException.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/impl/InvalidLoginException.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/model/Role.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/impl/MysqlUserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/service/IUserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/dao/IUserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/model/Address.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/model/UserAndAdress.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/model/Product.java" />
         <option value="$PROJECT_DIR$/src/test/java/core/model/UserTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/model/User.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/dao/imp/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/core/model/ProductTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/core/model/AddressTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/dao/imp/ProductServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/helper/IJWTHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/impl/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java" />
         <option value="$PROJECT_DIR$/src/test/java/controller/ProtectedEndPointsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/helper/JWTTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/ProtectedEndpoints.java" />
         <option value="$PROJECT_DIR$/src/main/java/helper/JWTHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/controller/PublicEndpoints.java" />
+        <option value="$PROJECT_DIR$/src/test/java/controller/PublicEndpointsTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/impl/MysqlUserDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/ProtectedEndpoints.java" />
+        <option value="$PROJECT_DIR$/src/test/java/dao/imp/UserServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/impl/UserService.java" />
       </list>
     </option>
   </component>
@@ -227,123 +244,109 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="helper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="imp" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="thorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thorn" type="462c0819:PsiDirectoryNode" />
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="feladat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feladat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="helper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,100 +377,32 @@
   <component name="RunManager" selected="Application.Thorntail">
     <configuration name="Thorntail" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.wildfly.swarm.runner.Runner" />
-      <module name="thorn" />
+      <module name="feladat" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="AddressTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="thorn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="core.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="core.model" />
-      <option name="MAIN_CLASS_NAME" value="core.model.AddressTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration name="All in thorn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="thorn" />
+      <module name="feladat" />
+      <extension name="coverage" track_test_folders="true" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://%MODULE_WORKING_DIR%" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <patterns />
     </configuration>
-    <configuration name="JWTTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="thorn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="helper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="helper" />
-      <option name="MAIN_CLASS_NAME" value="helper.JWTTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ProductTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="thorn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="core.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="core.model" />
-      <option name="MAIN_CLASS_NAME" value="core.model.ProductTests" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ProtectedEndPointsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="thorn" />
+    <configuration name="PublicEndpoints" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="feladat" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controller.*" />
@@ -477,7 +412,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ProtectedEndPointsTest" />
+      <option name="MAIN_CLASS_NAME" value="controller.PublicEndpoints" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -499,6 +434,29 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="null" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="feladat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://%MODULE_WORKING_DIR%" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
@@ -530,18 +488,11 @@
     <list>
       <item itemvalue="Application.Thorntail" />
       <item itemvalue="JUnit.All in thorn" />
-      <item itemvalue="JUnit.JWTTest" />
-      <item itemvalue="JUnit.ProductTests" />
-      <item itemvalue="JUnit.AddressTest" />
-      <item itemvalue="JUnit.ProtectedEndPointsTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProtectedEndPointsTest" />
         <item itemvalue="JUnit.All in thorn" />
-        <item itemvalue="JUnit.AddressTest" />
-        <item itemvalue="JUnit.ProductTests" />
-        <item itemvalue="JUnit.JWTTest" />
+        <item itemvalue="JUnit.null" />
       </list>
     </recent_temporary>
   </component>
@@ -562,6 +513,7 @@
       <workItem from="1596519570427" duration="5334000" />
       <workItem from="1596606362448" duration="12854000" />
       <workItem from="1596692114652" duration="15374000" />
+      <workItem from="1596778059059" duration="5678000" />
     </task>
     <task id="LOCAL-00001" summary="User kijavítva">
       <created>1596026852795</created>
@@ -651,21 +603,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProtectedEndPointsTest - 2020.08.06 at 19h 23m 17s.xml">
-      <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProtectedEndPointsTest - 2020.08.06 at 19h 23m 56s.xml">
-      <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProtectedEndPointsTest - 2020.08.06 at 19h 24m 58s.xml">
-      <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProtectedEndPointsTest - 2020.08.06 at 19h 25m 18s.xml">
-      <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProtectedEndPointsTest - 2020.08.06 at 19h 26m 16s.xml">
-      <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ProtectedEndPointsTest - 2020.08.06 at 19h 27m 30s.xml">
       <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
     </history-entry>
@@ -681,71 +618,63 @@
     <history-entry file="ProtectedEndPointsTest - 2020.08.06 at 19h 46m 59s.xml">
       <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ProtectedEndPointsTest - 2020.08.07 at 07h 29m 27s.xml">
+      <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProtectedEndPointsTest - 2020.08.07 at 07h 34m 15s.xml">
+      <configuration name="ProtectedEndPointsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PublicEndpointsTest - 2020.08.07 at 07h 49m 42s.xml">
+      <configuration name="PublicEndpointsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_thorn - 2020.08.07 at 08h 02m 28s.xml">
+      <configuration name="All in thorn" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_thorn - 2020.08.07 at 08h 03m 27s.xml">
+      <configuration name="All in thorn" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56936000" />
+    <option name="totallyTimeSpent" value="62614000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50159913" side_tool="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="CDI" order="4" weight="0.3296875" />
+      <window_info anchor="right" id="CDI" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Database" order="3" sideWeight="0.4967742" visible="true" weight="0.22014925" />
+      <window_info anchor="right" id="Database" order="3" sideWeight="0.49607536" visible="true" weight="0.2796875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3982684" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32792208" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Java Enterprise" order="8" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4989339" weight="0.32900432" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49840087" visible="true" weight="0.32900432" />
-      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.5032258" side_tool="true" visible="true" weight="0.22014925" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49947917" weight="0.33766234" />
-      <window_info id="Persistence" order="2" sideWeight="0.5064516" side_tool="true" visible="true" weight="0.23667377" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4935484" visible="true" weight="0.23667377" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" sideWeight="0.5016129" side_tool="true" weight="0.26918977" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32921347" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24985994" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="7" />
-      <window_info anchor="right" id="Bean Validation" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Database" order="3" sideWeight="0.49748743" visible="true" weight="0.28011206" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3284055" />
-      <window_info anchor="right" id="CDI" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.3273495" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Java Enterprise" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3284055" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3284055" />
+      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.50392467" side_tool="true" visible="true" weight="0.2796875" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947916" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Persistence" order="2" sideWeight="0.5064516" side_tool="true" visible="true" weight="0.23667377" />
       <window_info anchor="bottom" id="Database Console" order="8" weight="0.32921347" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Bean Validation" order="4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info id="Designer" order="2" />
     </layout>
     <layout-to-restore>
       <window_info id="Persistence" order="2" side_tool="true" />
@@ -802,7 +731,9 @@
     <MESSAGE value="fölösleges importok törlése" />
     <MESSAGE value="a regisztráció kiegészitve a címmel és hozzá kulon model létrehozva" />
     <MESSAGE value="most már csak a saját termékeiket tudják megkapni a userek nem játszhatják ki, product name hossza módosítva és a image regex javítva. UserEndpointbol a collection import kivéve" />
-    <option name="LAST_COMMIT_MESSAGE" value="most már csak a saját termékeiket tudják megkapni a userek nem játszhatják ki, product name hossza módosítva és a image regex javítva. UserEndpointbol a collection import kivéve" />
+    <MESSAGE value="a modifyuser javítva a controllerbe mert rossz responet adott vissza. InvalidLoginExcpetion átrakva exceptions mappába. User jelszó karakter növélse sha1 miatt. éés a password lerövidítva amit visszadunk frontendnek" />
+    <MESSAGE value="a modifyuser javítva a controllerbe mert rossz responet adott vissza. InvalidLoginExcpetion átrakva exceptions mappába. User jelszó karakter növélse sha1 miatt. éés a password lerövidítva amit visszadunk frontendnek, pár warning javítva a controllerekben" />
+    <option name="LAST_COMMIT_MESSAGE" value="a modifyuser javítva a controllerbe mert rossz responet adott vissza. InvalidLoginExcpetion átrakva exceptions mappába. User jelszó karakter növélse sha1 miatt. éés a password lerövidítva amit visszadunk frontendnek, pár warning javítva a controllerekben" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -810,20 +741,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/dao/IUserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -906,28 +823,10 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/InvalidLoginException.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/PublicEndpoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://cd012af4-a6d6-4ab9-b893-cb0d27c21bb0/schema/feladat/table/user">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/InvalidLoginException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#122#123#0" expanded="true" />
-            <element signature="e#142#143#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -938,13 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/dao/IUserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -963,19 +855,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/dao/imp/RandomProductTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setPassword#0;class#User#0" />
-            <element signature="method#setRealname#0;class#User#0" />
-            <element signature="method#toString#0;class#User#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1932">
@@ -987,18 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="654">
           <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/ProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#675#676#0" expanded="true" />
-            <element signature="e#1427#1428#0" expanded="true" />
-            <element signature="e#1478#1479#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,9 +900,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1076,40 +940,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/dao/imp/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="24" selection-start-line="24" selection-end-line="24" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/dao/imp/ProductServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
+        <state relative-caret-position="1190">
           <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="75" column="28" lean-forward="true" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1120,20 +957,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controller/ProtectedEndPointsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/helper/JWTTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+        <state relative-caret-position="136">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1156,8 +983,8 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.13/junit-4.13.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="4233">
+          <caret line="249" selection-start-line="249" selection-end-line="249" />
         </state>
       </provider>
     </entry>
@@ -1165,14 +992,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="279" selection-start-line="279" selection-end-line="279" />
-          <folding>
-            <element signature="e#2545#2546#0" expanded="true" />
-            <element signature="e#2589#2590#0" expanded="true" />
-            <element signature="e#6763#6898#0" expanded="true" />
-            <element signature="e#6897#6898#0" expanded="true" />
-            <element signature="e#7650#7814#0" expanded="true" />
-            <element signature="e#7813#7814#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1183,27 +1002,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ProtectedEndpoints.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/helper/JWTHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="213" selection-start-line="213" selection-end-line="213" />
+        <state relative-caret-position="68">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/controller/ProtectedEndPointsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="36" selection-start-line="36" selection-end-line="47" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/MysqlUserDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/controller/PublicEndpointsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="22" selection-start-line="22" selection-end-line="22" selection-end-column="10" />
+        <state relative-caret-position="401">
+          <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/helper/JWTHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/dao/IUserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        <state relative-caret-position="221">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/expections/InvalidLoginException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/PublicEndpoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="33" column="12" lean-forward="true" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#1427#1428#0" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1802#1803#0" expanded="true" />
+            <element signature="e#1836#1837#0" expanded="true" />
+            <element signature="method#setRealname#0;class#User#0" />
+            <element signature="method#toString#0;class#User#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/MysqlUserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="24" column="10" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ProtectedEndpoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1001">
+          <caret line="275" column="98" selection-start-line="275" selection-start-column="98" selection-end-line="275" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/dao/imp/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserEndpoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
         </state>
       </provider>
     </entry>

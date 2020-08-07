@@ -110,7 +110,7 @@ public class MysqlUserDAO implements IUserDAO {
                 .uniqueResult();
 
         if (user != null) {
-            user.setPassword("TemporaryPassword#2");
+            user.setPassword("Temporary#2");
 
             return user;
         }

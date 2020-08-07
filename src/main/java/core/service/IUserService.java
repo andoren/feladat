@@ -4,7 +4,7 @@ import core.exceptions.InvalidPassword;
 import core.model.Address;
 import core.model.Role;
 import core.model.User;
-import service.impl.InvalidLoginException;
+import service.impl.expections.InvalidLoginException;
 
 import java.util.Collection;
 
