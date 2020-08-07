@@ -47,7 +47,7 @@ public class ProtectedEndpoints {
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
 
         try{
-            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            User user = JWTHelper.decodeJWT(token);
             builder = Response.ok(productService.addProduct(product));
 
         }
@@ -71,7 +71,7 @@ public class ProtectedEndpoints {
     public Response getNotAuthProducts(@HeaderParam("Authorization") String token){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            User user = JWTHelper.decodeJWT(token);
             if(user.getRole() == Role.admin)builder = Response.ok(productService.getNotAuthorizedProducts());
             else{
                 Map<String, String> responseObj = new HashMap<>();
@@ -100,7 +100,7 @@ public class ProtectedEndpoints {
     public Response getProductsByUserId(@HeaderParam("Authorization") String token, @PathParam("id") int id){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            User user = JWTHelper.decodeJWT(token);
             if(user.getId() == id)builder = Response.ok(productService.getProductsByUserId(user));
             else{
                 Map<String, String> responseObj = new HashMap<>();
@@ -129,7 +129,7 @@ public class ProtectedEndpoints {
     public Response getUsers(@HeaderParam("Authorization") String token ){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            User user = JWTHelper.decodeJWT(token);
             if(user.getRole() == Role.admin)builder = Response.ok(userService.getAllUsers());
             else{
                 Map<String, String> responseObj = new HashMap<>();
@@ -159,7 +159,7 @@ public class ProtectedEndpoints {
     public Response buyProduct(@HeaderParam("Authorization") String token, Product product){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            User user = JWTHelper.decodeJWT(token);
             product.setIsSold(true);
             Calendar today = Calendar.getInstance();
             product.setSold_date(today.getTime());
@@ -191,7 +191,7 @@ public class ProtectedEndpoints {
     public Response authProduct(@HeaderParam("Authorization") String token, Product product){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User user = JWTHelper.decodeJWT(token.split(":")[1]);
+            User user = JWTHelper.decodeJWT(token);
             if(user.getRole() == Role.admin)builder = Response.ok(productService.authProduct(product));
             else{
                 Map<String, String> responseObj = new HashMap<>();
@@ -220,7 +220,7 @@ public class ProtectedEndpoints {
     public Response modifyUser(@HeaderParam("Authorization") String token, User user){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            User getuser = JWTHelper.decodeJWT(token);
             if(getuser.getRole() == Role.admin)builder = Response.ok(userService.modifyUser(user));
             else{
                 Map<String, String> responseObj = new HashMap<>();
@@ -247,7 +247,7 @@ public class ProtectedEndpoints {
     public Response deleteUser(@HeaderParam("Authorization") String token,@PathParam("id") int id){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            User getuser = JWTHelper.decodeJWT(token);
             if(getuser.getRole() == Role.admin)builder = Response.ok(userService.deleteUserById(id));
             else{
                 Map<String, String> responseObj = new HashMap<>();
@@ -275,7 +275,7 @@ public class ProtectedEndpoints {
     public Response getUserById(@HeaderParam("Authorization") String token, @PathParam("id") int id){
         Response.ResponseBuilder builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR);
         try{
-            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            User getuser = JWTHelper.decodeJWT(token);
             if(getuser.getRole() == Role.admin)builder = Response.ok(userService.getUserById(id));
             else{
                 Map<String, String> responseObj = new HashMap<>();
@@ -304,7 +304,7 @@ public class ProtectedEndpoints {
     public Response getAddresses(@HeaderParam("Authorization") String token){
         Response.ResponseBuilder builder = Response.status(Response.Status.BAD_REQUEST);
         try{
-            User getuser = JWTHelper.decodeJWT(token.split(":")[1]);
+            User getuser = JWTHelper.decodeJWT(token);
             builder = Response.ok(userService.getUserAddresses(getuser.getId()));
 
         }

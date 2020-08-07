@@ -34,10 +34,12 @@ public class JWTHelper implements IJWTHelper{
         }
     }
     public User decodeJWT(String token) throws JWTVerificationException, InvalidEmailException, InvalidRealnameException, InvalidUsernameException {
-            token = token.trim();
+        token = token.split(":")[1] ;
+        token = token.trim();
             JWTVerifier verifier = JWT.require(algorithmHS)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
+        System.out.println(jwt.getClaim("realname").asString());
             User user = new User();
             user.setId(jwt.getClaim("userId").asInt());
             user.setEmail(jwt.getClaim("email").asString());
