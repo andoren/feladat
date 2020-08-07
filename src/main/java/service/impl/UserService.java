@@ -1,6 +1,9 @@
 package service.impl;
 
+import core.exceptions.InvalidEmailException;
 import core.exceptions.InvalidPassword;
+import core.exceptions.InvalidRealnameException;
+import core.exceptions.InvalidUsernameException;
 import core.model.Address;
 import core.model.Role;
 import core.model.User;
@@ -43,7 +46,7 @@ public class UserService implements IUserService {
         return dao.addUser(user);
     }
 
-    public boolean deleteUserById(int id) {
+    public boolean deleteUserById(int id) throws InvalidEmailException, InvalidRealnameException, InvalidUsernameException {
         return dao.deleteUserById(id);
     }
 

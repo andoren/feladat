@@ -1,6 +1,7 @@
 package core.model;
 
 import core.exceptions.*;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -110,5 +111,10 @@ public class UserTests {
     @Test(expected = InvalidEmailException.class)
     public void NoAtSymbolEmail() throws InvalidEmailException {
         user.setEmail("mpekar55gmail.com");
+    }
+    @Test(expected = InvalidEmailException.class)
+    public void setDeleted() throws InvalidEmailException {
+        user.setDeleted(true);
+        Assert.assertTrue(user.getDeleted());
     }
 }

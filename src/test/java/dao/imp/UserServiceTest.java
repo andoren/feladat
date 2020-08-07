@@ -79,7 +79,7 @@ public class UserServiceTest {
         Assert.assertEquals(goodUser,user);
     }
     @Test
-    public void deleteUser(){
+    public void deleteUser() throws InvalidEmailException, InvalidRealnameException, InvalidUsernameException {
         boolean result = service.deleteUserById(1);
         Assert.assertTrue(result);
     }

@@ -1,6 +1,9 @@
 package dao.impl;
 
+import core.exceptions.InvalidEmailException;
 import core.exceptions.InvalidPassword;
+import core.exceptions.InvalidRealnameException;
+import core.exceptions.InvalidUsernameException;
 import core.model.Address;
 import core.model.Product;
 import core.model.Role;
@@ -39,7 +42,7 @@ public class MysqlUserDAO implements IUserDAO {
     public Collection<User> getAllUsers() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Query query = session.createQuery("from User");
+        Query query = session.createQuery("from User where deleted = 0");
         return query.getResultList();
     }
 
@@ -89,16 +92,14 @@ public class MysqlUserDAO implements IUserDAO {
         return user;
     }
 
-    public boolean deleteUserById(int id) {
+    public boolean deleteUserById(int id) throws InvalidRealnameException, InvalidEmailException, InvalidUsernameException {
 
-        User user = new User();
-        user.setId(id);
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.delete(user);
-        session.getTransaction().commit();
-        session.close();
-        return true;
+        User user = getUserById(id);
+        user.setRealname("Törölt felhasználó");
+        user.setEmail("torolt@felhasznalo.com");
+        user.setUsername("torolt");
+        user.setDeleted(true);
+        return modifyUser(user);
     }
 
 
@@ -106,7 +107,7 @@ public class MysqlUserDAO implements IUserDAO {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         User user ;
-        user = (User) session.createQuery("FROM User U WHERE U.username = :userName and U.password = :passWord").setParameter("userName", username).setParameter("passWord",password)
+        user = (User) session.createQuery("FROM User U WHERE U.username = :userName and U.password = :passWord and deleted != 1" ).setParameter("userName", username).setParameter("passWord",password)
                 .uniqueResult();
 
         if (user != null) {

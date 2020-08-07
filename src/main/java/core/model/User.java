@@ -49,6 +49,8 @@ public class User {
     @Column(name="username")
     private String username;
 
+    @Column(name="deleted")
+    private boolean deleted;
 
     @Transient
     private String token;
@@ -107,6 +109,14 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+    public boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
     public String toString(){
         StringBuilder string= new StringBuilder();
         string.append("Username: ").append(this.getUsername()).append("\n")
